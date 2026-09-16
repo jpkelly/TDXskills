@@ -34,7 +34,7 @@ TD's network editor shows node positions visually. Stacked nodes are invisible a
 
 When working with TouchDesigner APIs, parameters, DAT callbacks, operator types, or workflows:
 
-- **Never guess parameter names** — probe the actual operator with `pars()` in the text port
+- **Never guess parameter names** — probe the actual operator with `pars()` in the Textport
 - **Never assume callback function names** — check the DAT's `par.panelvalue` and test which callback method fires
 - **Never assume OP type names** — use `type(c).__name__` or probe with `dir(td)` to confirm
 - **Always verify behavior** with a small test through the bridge before applying it to the user's project

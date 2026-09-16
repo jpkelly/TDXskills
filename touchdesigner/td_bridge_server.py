@@ -102,7 +102,7 @@ class BridgeServer:
             code = payload.get('code', '')
             mode = payload.get('mode', 'exec')
 
-            # Capture stdout (Text Port output)
+            # Capture stdout (Textport output)
             old_stdout = sys.stdout
             captured = io.StringIO()
             sys.stdout = captured

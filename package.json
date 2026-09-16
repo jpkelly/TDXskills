@@ -28,17 +28,17 @@
       },
       {
         "command": "tdBridge.sendSelection",
-        "title": "TouchDesigner: Send Selection to Text Port",
+        "title": "TouchDesigner: Send Selection to Textport",
         "category": "TD Bridge"
       },
       {
         "command": "tdBridge.sendFile",
-        "title": "TouchDesigner: Send File to Text Port",
+        "title": "TouchDesigner: Send File to Textport",
         "category": "TD Bridge"
       },
       {
         "command": "tdBridge.sendLine",
-        "title": "TouchDesigner: Send Current Line to Text Port",
+        "title": "TouchDesigner: Send Current Line to Textport",
         "category": "TD Bridge"
       },
       {

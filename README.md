@@ -1,6 +1,6 @@
 # TDXskills — TouchDesigner + VS Code Integration
 
-A portable toolkit for working with TouchDesigner from VS Code. Write Python in VS Code, execute it in a live TD instance, and see results instantly — no copy-paste to the Text Port.
+A portable toolkit for working with TouchDesigner from VS Code. Write Python in VS Code, execute it in a live TD instance, and see results instantly — no copy-paste to the Textport.
 
 ## What This Gives You
 

@@ -1,0 +1,180 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "TD Bridge: Send Selection",
+      "type": "shell",
+      "command": "python3 ${workspaceFolder}/.vscode/td_send.py",
+      "args": [
+        "--selection"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "TD Bridge: Send File",
+      "type": "shell",
+      "command": "python3 ${workspaceFolder}/.vscode/td_send.py",
+      "args": ["--file"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "TD Snapshot: Save",
+      "type": "shell",
+      "command": "python3 ${workspaceFolder}/.vscode/td_snapshot.py",
+      "args": ["--save", "--root", "/project1"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "TD Snapshot: Save Named",
+      "type": "shell",
+      "command": "python3 ${workspaceFolder}/.vscode/td_snapshot.py",
+      "args": ["--save", "--root", "/project1", "--name", "${input:snapshotName}"],
+      "group": "build",
+      "inputs": [
+        {
+          "id": "snapshotName",
+          "type": "promptString",
+          "description": "Snapshot name (e.g. 'before-modal-fix')",
+          "default": "manual"
+        }
+      ],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "TD Snapshot: Save Scoped",
+      "type": "shell",
+      "command": "python3 ${workspaceFolder}/.vscode/td_snapshot.py",
+      "args": ["--save", "--root", "${input:snapshotPath}", "--name", "${input:snapshotName}"],
+      "group": "build",
+      "inputs": [
+        {
+          "id": "snapshotPath",
+          "type": "promptString",
+          "description": "Root node path to capture (e.g. /project1/MyUI)",
+          "default": "/project1"
+        },
+        {
+          "id": "snapshotName",
+          "type": "promptString",
+          "description": "Snapshot name (e.g. 'myui-layout')",
+          "default": "scoped"
+        }
+      ],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "TD Snapshot: Restore",
+      "type": "shell",
+      "command": "python3 ${workspaceFolder}/.vscode/td_snapshot.py",
+      "args": ["--restore", "${input:snapshotFile}", "--root", "${input:snapshotPath}"],
+      "group": "build",
+      "inputs": [
+        {
+          "id": "snapshotFile",
+          "type": "promptString",
+          "description": "Snapshot filename or name (e.g. 'manual' or '20260916_141500.json')",
+          "default": ""
+        },
+        {
+          "id": "snapshotPath",
+          "type": "promptString",
+          "description": "Root node path to restore into (e.g. /project1 or /project1/MyUI)",
+          "default": "/project1"
+        }
+      ],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "TD Snapshot: Diff",
+      "type": "shell",
+      "command": "python3 ${workspaceFolder}/.vscode/td_snapshot.py",
+      "args": ["--diff", "${input:snapshotFile}", "--root", "${input:snapshotPath}"],
+      "group": "build",
+      "inputs": [
+        {
+          "id": "snapshotFile",
+          "type": "promptString",
+          "description": "Snapshot to compare against (name or filename)",
+          "default": ""
+        },
+        {
+          "id": "snapshotPath",
+          "type": "promptString",
+          "description": "Root node path to compare (e.g. /project1 or /project1/MyUI)",
+          "default": "/project1"
+        }
+      ],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "TD Snapshot: List",
+      "type": "shell",
+      "command": "python3 ${workspaceFolder}/.vscode/td_snapshot.py",
+      "args": ["--list"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}

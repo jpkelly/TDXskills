@@ -1,0 +1,12 @@
+{
+  "name": "td-mcp-server",
+  "version": "0.1.0",
+  "description": "MCP server that exposes TouchDesigner's Python environment to VS Code Copilot Chat",
+  "type": "module",
+  "bin": {
+    "td-mcp-server": "./index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  }
+}

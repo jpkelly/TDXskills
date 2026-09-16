@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "td-bridge": {
+      "command": "node",
+      "args": ["${workspaceFolder}/mcp/index.js"]
+    }
+  }
+}

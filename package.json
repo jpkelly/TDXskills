@@ -1,0 +1,113 @@
+{
+  "name": "tdx-skills",
+  "displayName": "TDXskills",
+  "description": "TouchDesigner + VS Code integration — send Python to TD, Copilot Chat tools, node snapshots, TDI autocomplete.",
+  "version": "0.1.0",
+  "publisher": "jp",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other", "Extension Packs"],
+  "activationEvents": [
+    "onCommand:tdBridge.connect",
+    "onCommand:tdBridge.sendSelection",
+    "onCommand:tdBridge.sendFile"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "tdBridge.connect",
+        "title": "TouchDesigner: Connect",
+        "category": "TD Bridge"
+      },
+      {
+        "command": "tdBridge.disconnect",
+        "title": "TouchDesigner: Disconnect",
+        "category": "TD Bridge"
+      },
+      {
+        "command": "tdBridge.sendSelection",
+        "title": "TouchDesigner: Send Selection to Text Port",
+        "category": "TD Bridge"
+      },
+      {
+        "command": "tdBridge.sendFile",
+        "title": "TouchDesigner: Send File to Text Port",
+        "category": "TD Bridge"
+      },
+      {
+        "command": "tdBridge.sendLine",
+        "title": "TouchDesigner: Send Current Line to Text Port",
+        "category": "TD Bridge"
+      },
+      {
+        "command": "tdBridge.evalExpression",
+        "title": "TouchDesigner: Evaluate Expression (read result)",
+        "category": "TD Bridge"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "tdBridge.sendSelection",
+        "key": "ctrl+enter",
+        "mac": "cmd+enter",
+        "when": "editorTextFocus && editorLangId == python"
+      },
+      {
+        "command": "tdBridge.sendLine",
+        "key": "shift+enter",
+        "mac": "shift+enter",
+        "when": "editorTextFocus && editorLangId == python"
+      },
+      {
+        "command": "tdBridge.sendFile",
+        "key": "ctrl+shift+enter",
+        "mac": "cmd+shift+enter",
+        "when": "editorTextFocus && editorLangId == python"
+      }
+    ],
+    "configuration": {
+      "title": "TouchDesigner Bridge",
+      "properties": {
+        "tdBridge.host": {
+          "type": "string",
+          "default": "127.0.0.1",
+          "description": "Host where TouchDesigner is running"
+        },
+        "tdBridge.port": {
+          "type": "number",
+          "default": 9980,
+          "description": "Port the TD bridge server listens on"
+        },
+        "tdBridge.autoConnect": {
+          "type": "boolean",
+          "default": false,
+          "description": "Attempt to connect automatically when a Python file is opened"
+        },
+        "tdBridge.timeout": {
+          "type": "number",
+          "default": 10000,
+          "description": "Request timeout in milliseconds"
+        },
+        "tdBridge.showStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show connection status in the status bar"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.0"
+  }
+}

@@ -1,0 +1,402 @@
+{
+  "name": "MyUI",
+  "type": "containerCOMP",
+  "path": "/project1/MyUI",
+  "nodeX": 0,
+  "nodeY": 0,
+  "color": [
+    0.6700000166893005,
+    0.6700000166893005,
+    0.6700000166893005
+  ],
+  "pars": {
+    "x": 0,
+    "y": 0,
+    "w": 400,
+    "h": 300,
+    "layer": 0.0,
+    "display": true,
+    "enable": true,
+    "bgcolorr": 0.0,
+    "bgcolorg": 0.0,
+    "bgcolorb": 0.0,
+    "bgalpha": 0.0,
+    "borderaalpha": 1.0,
+    "borderbr": 0.0,
+    "borderbg": 0.0,
+    "borderbb": 0.0,
+    "borderbalpha": 1.0,
+    "leftborder": "off",
+    "rightborder": "off",
+    "bottomborder": "off",
+    "topborder": "off",
+    "opacity": 1.0,
+    "justifyh": "off",
+    "justifyv": "off"
+  },
+  "text": null,
+  "children": [
+    {
+      "name": "ModalDialog",
+      "type": "containerCOMP",
+      "path": "/project1/MyUI/ModalDialog",
+      "nodeX": 400,
+      "nodeY": 0,
+      "color": [
+        0.6700000166893005,
+        0.6700000166893005,
+        0.6700000166893005
+      ],
+      "pars": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 300,
+        "layer": 10.0,
+        "display": false,
+        "enable": true,
+        "bgcolorr": 0.1,
+        "bgcolorg": 0.1,
+        "bgcolorb": 0.12,
+        "bgalpha": 0.9,
+        "borderaalpha": 1.0,
+        "borderbr": 0.0,
+        "borderbg": 0.0,
+        "borderbb": 0.0,
+        "borderbalpha": 1.0,
+        "leftborder": "off",
+        "rightborder": "off",
+        "bottomborder": "off",
+        "topborder": "off",
+        "opacity": 1.0,
+        "justifyh": "off",
+        "justifyv": "off"
+      },
+      "text": null,
+      "children": [
+        {
+          "name": "Title",
+          "type": "textTOP",
+          "path": "/project1/MyUI/ModalDialog/Title",
+          "nodeX": 0,
+          "nodeY": 150,
+          "color": [
+            0.6700000166893005,
+            0.6700000166893005,
+            0.6700000166893005
+          ],
+          "pars": {
+            "text": "Hello from VS Code!",
+            "fontsizex": 30.0,
+            "fontsizey": 30.0,
+            "alignx": "center",
+            "aligny": "center",
+            "fontcolorr": 1.0,
+            "fontcolorg": 1.0,
+            "fontcolorb": 1.0,
+            "fontalpha": 1.0,
+            "bgcolorr": 0.0,
+            "bgcolorg": 0.0,
+            "bgcolorb": 0.0,
+            "bgalpha": 0.0,
+            "borderaalpha": 1.0,
+            "borderbr": 0.0,
+            "borderbg": 0.0,
+            "borderbb": 0.0,
+            "borderbalpha": 1.0,
+            "leftborder": "off",
+            "rightborder": "off",
+            "bottomborder": "off",
+            "topborder": "off",
+            "resolutionw": 400,
+            "resolutionh": 60
+          },
+          "text": null,
+          "children": []
+        },
+        {
+          "name": "CloseButton1",
+          "type": "buttonCOMP",
+          "path": "/project1/MyUI/ModalDialog/CloseButton1",
+          "nodeX": 0,
+          "nodeY": 0,
+          "color": [
+            0.550000011920929,
+            0.550000011920929,
+            0.550000011920929
+          ],
+          "pars": {
+            "label": "Close",
+            "value0": false,
+            "buttontype": "momentary",
+            "fontsize": 10.0,
+            "colorr": 0.5,
+            "colorg": 0.5,
+            "colorb": 0.5,
+            "x": 150,
+            "y": 40,
+            "w": 100,
+            "h": 40,
+            "layer": 11.0,
+            "display": true,
+            "enable": true,
+            "bgcolorr": 0.8,
+            "bgcolorg": 0.2,
+            "bgcolorb": 0.2,
+            "bgalpha": 1.0,
+            "borderaalpha": 1.0,
+            "borderbr": 0.0,
+            "borderbg": 0.0,
+            "borderbb": 0.0,
+            "borderbalpha": 1.0,
+            "leftborder": "off",
+            "rightborder": "off",
+            "bottomborder": "off",
+            "topborder": "off",
+            "opacity": 1.0,
+            "justifyh": "off",
+            "justifyv": "off"
+          },
+          "text": null,
+          "children": [
+            {
+              "name": "out1",
+              "type": "outCHOP",
+              "path": "/project1/MyUI/ModalDialog/CloseButton1/out1",
+              "nodeX": 200,
+              "nodeY": 0,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {
+                "label": "out1"
+              },
+              "text": null,
+              "children": []
+            },
+            {
+              "name": "text",
+              "type": "textCOMP",
+              "path": "/project1/MyUI/ModalDialog/CloseButton1/text",
+              "nodeX": 0,
+              "nodeY": 0,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {
+                "text": "Close",
+                "fontsize": 10.0,
+                "fontcolorr": 0.6,
+                "fontcolorg": 0.6,
+                "fontcolorb": 0.6,
+                "fontalpha": 1.0,
+                "alignx": "center",
+                "aligny": "center",
+                "x": 0,
+                "y": 0,
+                "w": 400,
+                "h": 300,
+                "layer": 0.0,
+                "display": true,
+                "enable": true,
+                "bgcolorr": 0.2,
+                "bgcolorg": 0.2,
+                "bgcolorb": 0.2,
+                "bgalpha": 1.0,
+                "borderaalpha": 1.0,
+                "borderbr": 0.0,
+                "borderbg": 0.0,
+                "borderbb": 0.0,
+                "borderbalpha": 1.0,
+                "leftborder": "bordera",
+                "rightborder": "bordera",
+                "bottomborder": "bordera",
+                "topborder": "bordera",
+                "opacity": 1.0,
+                "justifyh": "off",
+                "justifyv": "off"
+              },
+              "text": null,
+              "children": []
+            },
+            {
+              "name": "panelexec1",
+              "type": "panelexecuteDAT",
+              "path": "/project1/MyUI/ModalDialog/CloseButton1/panelexec1",
+              "nodeX": 200,
+              "nodeY": 0,
+              "color": [
+                0.6700000166893005,
+                0.6700000166893005,
+                0.6700000166893005
+              ],
+              "pars": {},
+              "text": "# panelValue - the PanelValue object that changed\n\ndef onValueChange(panelValue):\n    print('[TD Bridge DEBUG] Close button state changed:', panelValue)\n    if panelValue:\n        modal = op('/project1/MyUI/ModalDialog')\n        modal.par.display = False\n        print('[TD Bridge DEBUG] Modal closed!')\n    return\n",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LaunchButton2",
+      "type": "buttonCOMP",
+      "path": "/project1/MyUI/LaunchButton2",
+      "nodeX": 0,
+      "nodeY": 0,
+      "color": [
+        0.550000011920929,
+        0.550000011920929,
+        0.550000011920929
+      ],
+      "pars": {
+        "label": "Open Modal Dialog",
+        "value0": false,
+        "buttontype": "momentary",
+        "fontsize": 10.0,
+        "colorr": 0.5,
+        "colorg": 0.5,
+        "colorb": 0.5,
+        "x": 100,
+        "y": 130,
+        "w": 200,
+        "h": 40,
+        "layer": 0.0,
+        "display": true,
+        "enable": true,
+        "bgcolorr": 0.0,
+        "bgcolorg": 0.0,
+        "bgcolorb": 0.0,
+        "bgalpha": 0.0,
+        "borderaalpha": 1.0,
+        "borderbr": 0.0,
+        "borderbg": 0.0,
+        "borderbb": 0.0,
+        "borderbalpha": 1.0,
+        "leftborder": "off",
+        "rightborder": "off",
+        "bottomborder": "off",
+        "topborder": "off",
+        "opacity": 1.0,
+        "justifyh": "off",
+        "justifyv": "off"
+      },
+      "text": null,
+      "children": [
+        {
+          "name": "out1",
+          "type": "outCHOP",
+          "path": "/project1/MyUI/LaunchButton2/out1",
+          "nodeX": 275,
+          "nodeY": 175,
+          "color": [
+            0.550000011920929,
+            0.550000011920929,
+            0.550000011920929
+          ],
+          "pars": {
+            "label": "out1"
+          },
+          "text": null,
+          "children": []
+        },
+        {
+          "name": "par1",
+          "type": "parameterCHOP",
+          "path": "/project1/MyUI/LaunchButton2/par1",
+          "nodeX": 65,
+          "nodeY": 175,
+          "color": [
+            0.550000011920929,
+            0.550000011920929,
+            0.550000011920929
+          ],
+          "pars": {},
+          "text": null,
+          "children": []
+        },
+        {
+          "name": "text",
+          "type": "textCOMP",
+          "path": "/project1/MyUI/LaunchButton2/text",
+          "nodeX": 74,
+          "nodeY": 26,
+          "color": [
+            0.550000011920929,
+            0.550000011920929,
+            0.550000011920929
+          ],
+          "pars": {
+            "text": "Open Modal Dialog",
+            "fontsize": 10.0,
+            "fontcolorr": 0.6,
+            "fontcolorg": 0.6,
+            "fontcolorb": 0.6,
+            "fontalpha": 1.0,
+            "alignx": "center",
+            "aligny": "center",
+            "x": 0,
+            "y": 0,
+            "w": 400,
+            "h": 300,
+            "layer": 0.0,
+            "display": true,
+            "enable": true,
+            "bgcolorr": 0.2,
+            "bgcolorg": 0.2,
+            "bgcolorb": 0.2,
+            "bgalpha": 1.0,
+            "borderaalpha": 1.0,
+            "borderbr": 0.0,
+            "borderbg": 0.0,
+            "borderbb": 0.0,
+            "borderbalpha": 1.0,
+            "leftborder": "bordera",
+            "rightborder": "bordera",
+            "bottomborder": "bordera",
+            "topborder": "bordera",
+            "opacity": 1.0,
+            "justifyh": "off",
+            "justifyv": "off"
+          },
+          "text": null,
+          "children": []
+        },
+        {
+          "name": "parexec1",
+          "type": "parameterexecuteDAT",
+          "path": "/project1/MyUI/LaunchButton2/parexec1",
+          "nodeX": 66,
+          "nodeY": -83,
+          "color": [
+            0.550000011920929,
+            0.550000011920929,
+            0.550000011920929
+          ],
+          "pars": {},
+          "text": "# par - the Par object that has changed\n# prev - the previous value\n\ndef onValueChange(par, prev):\n\tif not parent().panel.select :\n\t\tparent().panel.state = par.eval()\n\treturn",
+          "children": []
+        },
+        {
+          "name": "panelexec1",
+          "type": "panelexecuteDAT",
+          "path": "/project1/MyUI/LaunchButton2/panelexec1",
+          "nodeX": 247,
+          "nodeY": -81,
+          "color": [
+            0.550000011920929,
+            0.550000011920929,
+            0.550000011920929
+          ],
+          "pars": {},
+          "text": "# panelValue - the PanelValue object that changed\n# Make sure the corresponding toggle is enabled in the Panel Execute DAT.\n\ndef onValueChange(panelValue):\n    parent().par.value0 = panelValue\n    print('[TD Bridge DEBUG] Launch button state changed:', panelValue)\n    modal = op('/project1/MyUI/ModalDialog')\n    # panelValue is 1 when pressed (momentary), 0 when released\n    if panelValue:\n        modal.par.display = True\n        print('[TD Bridge DEBUG] Modal opened!')\n    else:\n        pass  # don't close on release\n    return\n",
+          "children": []
+        }
+      ]
+    }
+  ]
+}

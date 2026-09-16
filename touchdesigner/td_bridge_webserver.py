@@ -11,12 +11,17 @@
 # ═══════════════════════════════════════════════════════════════════
 
 import json
-import sys
 import io
 import traceback
 
+# Store references to stdlib modules under private names so they can't be
+# clobbered by user code exec'd in globals() (e.g. `sys = op('/sys')`)
+_sys = __import__('sys')
+
 def onHTTPRequest(webServerDAT, request, response):
     """Called by the Web Server DAT on TD's main thread. Safe to use op()."""
+    # Restore sys in globals in case user code overwrote it
+    globals()['sys'] = _sys
     try:
         # Request body is in request['data'] (bytes)
         body = request.get('data', b'')
@@ -29,10 +34,10 @@ def onHTTPRequest(webServerDAT, request, response):
         code = payload.get('code', '')
         mode = payload.get('mode', 'exec')
 
-        # Capture stdout
-        old_stdout = sys.stdout
+        # Capture stdout — use _sys (private ref) so user code can't break this
+        old_stdout = _sys.stdout
         captured = io.StringIO()
-        sys.stdout = captured
+        _sys.stdout = captured
 
         result = None
         error = None
@@ -45,7 +50,7 @@ def onHTTPRequest(webServerDAT, request, response):
         except Exception:
             error = traceback.format_exc().strip()
 
-        sys.stdout = old_stdout
+        _sys.stdout = old_stdout
         stdout_text = captured.getvalue()
 
         response_data = {

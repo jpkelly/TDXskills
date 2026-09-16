@@ -1,0 +1,1410 @@
+{
+  "name": "ModalDialog",
+  "type": "containerCOMP",
+  "path": "/project1/MyUI/ModalDialog",
+  "nodeX": 400,
+  "nodeY": 0,
+  "color": [
+    0.6700000166893005,
+    0.6700000166893005,
+    0.6700000166893005
+  ],
+  "pars": {
+    "x": 0,
+    "y": 0,
+    "w": 400,
+    "h": 300,
+    "layer": 10.0,
+    "display": false,
+    "enable": true,
+    "bgcolorr": 0.1,
+    "bgcolorg": 0.1,
+    "bgcolorb": 0.12,
+    "bgalpha": 0.9,
+    "borderaalpha": 1.0,
+    "borderbr": 0.0,
+    "borderbg": 0.0,
+    "borderbb": 0.0,
+    "borderbalpha": 1.0,
+    "leftborder": "off",
+    "rightborder": "off",
+    "bottomborder": "off",
+    "topborder": "off",
+    "opacity": 1.0,
+    "justifyh": "off",
+    "justifyv": "off"
+  },
+  "text": null,
+  "children": [
+    {
+      "name": "Title",
+      "type": "textTOP",
+      "path": "/project1/MyUI/ModalDialog/Title",
+      "nodeX": 30,
+      "nodeY": 320,
+      "color": [
+        0.6700000166893005,
+        0.6700000166893005,
+        0.6700000166893005
+      ],
+      "pars": {
+        "text": "Hello from VS Code!",
+        "fontsizex": 30.0,
+        "fontsizey": 30.0,
+        "alignx": "center",
+        "aligny": "center",
+        "fontcolorr": 1.0,
+        "fontcolorg": 1.0,
+        "fontcolorb": 1.0,
+        "fontalpha": 1.0,
+        "bgcolorr": 0.0,
+        "bgcolorg": 0.0,
+        "bgcolorb": 0.0,
+        "bgalpha": 0.0,
+        "borderaalpha": 1.0,
+        "borderbr": 0.0,
+        "borderbg": 0.0,
+        "borderbb": 0.0,
+        "borderbalpha": 1.0,
+        "leftborder": "off",
+        "rightborder": "off",
+        "bottomborder": "off",
+        "topborder": "off",
+        "resolutionw": 400,
+        "resolutionh": 60
+      },
+      "text": null,
+      "children": []
+    },
+    {
+      "name": "sliderHorz",
+      "type": "widgetCOMP",
+      "path": "/project1/MyUI/ModalDialog/sliderHorz",
+      "nodeX": 0,
+      "nodeY": 75,
+      "color": [
+        0.6000000238418579,
+        0.6000000238418579,
+        0.6000000238418579
+      ],
+      "pars": {
+        "x": 20,
+        "y": 140,
+        "w": 360,
+        "h": 20,
+        "layer": 11.0,
+        "display": true,
+        "enable": true,
+        "bgcolorr": 0.2,
+        "bgcolorg": 0.2,
+        "bgcolorb": 0.2,
+        "bgalpha": 1.0,
+        "borderaalpha": 0.0,
+        "borderbr": 0.0,
+        "borderbg": 0.0,
+        "borderbb": 0.0,
+        "borderbalpha": 1.0,
+        "leftborder": "off",
+        "rightborder": "off",
+        "bottomborder": "off",
+        "topborder": "off",
+        "opacity": 1.0,
+        "justifyh": "left",
+        "justifyv": "top",
+        "Value0": 0.3088300673711569,
+        "Label": "/project1/MyUI/ModalDialog/sliderHorz/label"
+      },
+      "text": null,
+      "children": [
+        {
+          "name": "code",
+          "type": "baseCOMP",
+          "path": "/project1/MyUI/ModalDialog/sliderHorz/code",
+          "nodeX": 0,
+          "nodeY": 0,
+          "color": [
+            0.5,
+            0.20000000298023224,
+            0.05000000074505806
+          ],
+          "pars": {},
+          "text": null,
+          "children": [
+            {
+              "name": "help",
+              "type": "evaluateDAT",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/code/help",
+              "nodeX": 0,
+              "nodeY": -200,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {},
+              "text": "\r\n",
+              "children": []
+            },
+            {
+              "name": "docsHelper",
+              "type": "containerCOMP",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/code/docsHelper",
+              "nodeX": 600,
+              "nodeY": -200,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {
+                "x": 0,
+                "y": 0,
+                "w": 32,
+                "h": 32,
+                "layer": 1.0,
+                "display": false,
+                "enable": true,
+                "bgcolorr": 0.0,
+                "bgcolorg": 0.0,
+                "bgcolorb": 0.0,
+                "bgalpha": 0.0,
+                "borderaalpha": 1.0,
+                "borderbr": 0.0,
+                "borderbg": 0.0,
+                "borderbb": 0.0,
+                "borderbalpha": 1.0,
+                "leftborder": "off",
+                "rightborder": "off",
+                "bottomborder": "off",
+                "topborder": "off",
+                "opacity": 1.0,
+                "justifyh": "off",
+                "justifyv": "off"
+              },
+              "text": null,
+              "children": [
+                {
+                  "name": "parexec1",
+                  "type": "parameterexecuteDAT",
+                  "path": "/project1/MyUI/ModalDialog/sliderHorz/code/docsHelper/parexec1",
+                  "nodeX": -200,
+                  "nodeY": 100,
+                  "color": [
+                    0.550000011920929,
+                    0.550000011920929,
+                    0.550000011920929
+                  ],
+                  "pars": {},
+                  "text": "def onValueChange(par, prev):\n\text.DocsHelper.onParValueChange(par, prev)\n\ndef onPulse(par):\n\text.DocsHelper.onParPulse(par)",
+                  "children": []
+                },
+                {
+                  "name": "DocsHelper",
+                  "type": "textDAT",
+                  "path": "/project1/MyUI/ModalDialog/sliderHorz/code/docsHelper/DocsHelper",
+                  "nodeX": -200,
+                  "nodeY": 200,
+                  "color": [
+                    0.550000011920929,
+                    0.550000011920929,
+                    0.550000011920929
+                  ],
+                  "pars": {},
+                  "text": "\"\"\"\nGeneric docs help button and pulse par system\n\"\"\"\n\nDocsHelper = op.TDResources.mod.DocsHelper.DocsHelper",
+                  "children": []
+                },
+                {
+                  "name": "parexec_PaletteComp",
+                  "type": "parameterexecuteDAT",
+                  "path": "/project1/MyUI/ModalDialog/sliderHorz/code/docsHelper/parexec_PaletteComp",
+                  "nodeX": -200,
+                  "nodeY": 0,
+                  "color": [
+                    0.550000011920929,
+                    0.550000011920929,
+                    0.550000011920929
+                  ],
+                  "pars": {},
+                  "text": "def onPulse(par):\n\tparent.DocsHelper.OpenDocs()\n\t",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "panelexec1",
+              "type": "panelexecuteDAT",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/code/panelexec1",
+              "nodeX": 200,
+              "nodeY": -200,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {},
+              "text": "# me - this DAT\n# panelValue - the PanelValue object that changed\n# \n# Make sure the corresponding toggle is enabled in the Panel Execute DAT.\n\nTDF = op.TDModules.mod.TDFunctions\n\ndef onOffToOn(panelValue):\n\tif not panelValue.owner.panel.ctrl:\n\t\treturn\n\top.TDResources.op('popMenu').Open(\n\t\t\t\t\t\titems=['Parameters', 'Viewer', 'Network', 'Customize Component'],\n\t\t\t\t\t\tcallback=onPopMenu)\n\ndef onPopMenu(info):\n\tif info['item'] == 'Parameters':\n\t\tparent.Widget.openParameters()\n\telif info['item'] == 'Viewer':\n\t\tparent.Widget.openViewer()\n\telif info['item'] == 'Network':\n\t\tTDF.showInPane(parent.Widget)\n\telif info['item'] == 'Customize Component':\n\t\top.TDDialogs.op('CompEditor').EditComp(parent.Widget)\n\t\t\n\ndef whileOn(panelValue):\n\treturn\n\ndef onOnToOff(panelValue):\n\treturn\n\ndef whileOff(panelValue):\n\treturn\n\ndef onValueChange(panelValue):\n\treturn\n\t",
+              "children": []
+            },
+            {
+              "name": "TDUpdateSystem",
+              "type": "containerCOMP",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/code/TDUpdateSystem",
+              "nodeX": 400,
+              "nodeY": -200,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {
+                "x": 0,
+                "y": 0,
+                "w": 400,
+                "h": 300,
+                "layer": 0.0,
+                "display": true,
+                "enable": true,
+                "bgcolorr": 0.0,
+                "bgcolorg": 0.0,
+                "bgcolorb": 0.0,
+                "bgalpha": 0.0,
+                "borderaalpha": 1.0,
+                "borderbr": 0.0,
+                "borderbg": 0.0,
+                "borderbb": 0.0,
+                "borderbalpha": 1.0,
+                "leftborder": "off",
+                "rightborder": "off",
+                "bottomborder": "off",
+                "topborder": "off",
+                "opacity": 1.0,
+                "justifyh": "off",
+                "justifyv": "off"
+              },
+              "text": null,
+              "children": [
+                {
+                  "name": "parexec_comp",
+                  "type": "parameterexecuteDAT",
+                  "path": "/project1/MyUI/ModalDialog/sliderHorz/code/TDUpdateSystem/parexec_comp",
+                  "nodeX": 0,
+                  "nodeY": 0,
+                  "color": [
+                    0.550000011920929,
+                    0.550000011920929,
+                    0.550000011920929
+                  ],
+                  "pars": {},
+                  "text": "def updater():\n\treturn parent().par.Updatesystem.eval().ext.Updater\n\ndef onValueChange(par, prev):\n\tupdater().onUpdateCompParValueChange(par, prev, parent())\n\ndef onPulse(par):\n\tupdater().onUpdateCompParPulse(par, parent())\t\n\t\n",
+                  "children": []
+                },
+                {
+                  "name": "parexec_system",
+                  "type": "parameterexecuteDAT",
+                  "path": "/project1/MyUI/ModalDialog/sliderHorz/code/TDUpdateSystem/parexec_system",
+                  "nodeX": 0,
+                  "nodeY": -200,
+                  "color": [
+                    0.550000011920929,
+                    0.550000011920929,
+                    0.550000011920929
+                  ],
+                  "pars": {},
+                  "text": "updater = op('parexec_comp').module.updater\n\ndef onValueChange(par, prev):\n\tupdater().onUpdateSystemParValueChange(par, prev)\n\ndef onPulse(par):\n\tupdater().onUpdateSystemParPulse(par)\t",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "label",
+          "type": "containerCOMP",
+          "path": "/project1/MyUI/ModalDialog/sliderHorz/label",
+          "nodeX": 200,
+          "nodeY": -300,
+          "color": [
+            0.5,
+            0.3499999940395355,
+            0.05000000074505806
+          ],
+          "pars": {
+            "x": 0,
+            "y": 0,
+            "w": 120,
+            "h": 32,
+            "layer": 1.0,
+            "display": true,
+            "enable": true,
+            "bgcolorr": 0.2,
+            "bgcolorg": 0.2,
+            "bgcolorb": 0.2,
+            "bgalpha": 1.0,
+            "borderaalpha": 1.0,
+            "borderbr": 0.0,
+            "borderbg": 0.0,
+            "borderbb": 0.0,
+            "borderbalpha": 1.0,
+            "leftborder": "off",
+            "rightborder": "off",
+            "bottomborder": "off",
+            "topborder": "off",
+            "opacity": 1.0,
+            "justifyh": "off",
+            "justifyv": "off"
+          },
+          "text": null,
+          "children": [
+            {
+              "name": "text",
+              "type": "textCOMP",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/label/text",
+              "nodeX": 0,
+              "nodeY": -200,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {
+                "text": "Slider Horizontal",
+                "fontsize": 10.0,
+                "fontcolorr": 0.65,
+                "fontcolorg": 0.65,
+                "fontcolorb": 0.65,
+                "fontalpha": 1.0,
+                "alignx": "left",
+                "aligny": "center",
+                "x": 0,
+                "y": 0,
+                "w": 400,
+                "h": 300,
+                "layer": 0.0,
+                "display": true,
+                "enable": true,
+                "bgcolorr": 0.0,
+                "bgcolorg": 0.0,
+                "bgcolorb": 0.0,
+                "bgalpha": 0.0,
+                "borderaalpha": 1.0,
+                "borderbr": 0.0,
+                "borderbg": 0.0,
+                "borderbb": 0.0,
+                "borderbalpha": 1.0,
+                "leftborder": "off",
+                "rightborder": "off",
+                "bottomborder": "off",
+                "topborder": "off",
+                "opacity": 1.0,
+                "justifyh": "off",
+                "justifyv": "off"
+              },
+              "text": null,
+              "children": []
+            },
+            {
+              "name": "parexecRunCommand",
+              "type": "parameterexecuteDAT",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/label/parexecRunCommand",
+              "nodeX": 0,
+              "nodeY": 0,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {},
+              "text": "# me - this DAT\n# par - the Par object that has changed\n# val - the current value\n# prev - the previous value\n#\n# Make sure the corresponding toggle is enabled in the Parameter Execute DAT.\n\ndef valueChange(par, val, prev):\n\tif par.name == 'Labelhorizontalmode':\n\t\t#if par.eval() == 'fill':\n\t\tval = True if val == 'fill' else False\n\t\tsetattr(parent.Widget.par.Labelhfillweight, 'enable', val)\n\t\tsetattr(parent.Widget.par.Labelwidth, 'enable', bool(1-val))\n\telif par.name == 'Labelverticalmode':\n\t\t#if par.eval() == 'fill':\n\t\tval = True if val == 'fill' else False\n\t\tsetattr(parent.Widget.par.Labelvfillweight, 'enable', val)\n\t\tsetattr(parent.Widget.par.Labelheight, 'enable', bool(1-val))\n\treturn\n\ndef onPulse(par):\n\treturn\n\ndef expressionChange(par, val, prev):\n\treturn\n\ndef exportChange(par, val, prev):\n\treturn\n\ndef enableChange(par, val, prev):\n\treturn\n\ndef modeChange(par, val, prev):\n\treturn\n",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "output",
+          "type": "baseCOMP",
+          "path": "/project1/MyUI/ModalDialog/sliderHorz/output",
+          "nodeX": 200,
+          "nodeY": 0,
+          "color": [
+            0.5,
+            0.20000000298023224,
+            0.05000000074505806
+          ],
+          "pars": {},
+          "text": null,
+          "children": [
+            {
+              "name": "dat",
+              "type": "outDAT",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/output/dat",
+              "nodeX": 400,
+              "nodeY": -600,
+              "color": [
+                0.5,
+                0.05000000074505806,
+                0.5
+              ],
+              "pars": {
+                "label": "dat"
+              },
+              "text": "Value\t0.3088300673711569\r\n",
+              "children": []
+            },
+            {
+              "name": "chop",
+              "type": "outCHOP",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/output/chop",
+              "nodeX": 200,
+              "nodeY": -300,
+              "color": [
+                0.05000000074505806,
+                0.5,
+                0.05000000074505806
+              ],
+              "pars": {
+                "label": "chop"
+              },
+              "text": null,
+              "children": []
+            },
+            {
+              "name": "Value0",
+              "type": "parameterCHOP",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/output/Value0",
+              "nodeX": 0,
+              "nodeY": -300,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {},
+              "text": null,
+              "children": []
+            },
+            {
+              "name": "datValues",
+              "type": "evaluateDAT",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/output/datValues",
+              "nodeX": 200,
+              "nodeY": -600,
+              "color": [
+                0.5,
+                0.05000000074505806,
+                0.5
+              ],
+              "pars": {},
+              "text": "Value\t0.3088300673711569\r\n",
+              "children": []
+            },
+            {
+              "name": "numValues",
+              "type": "tableDAT",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/output/numValues",
+              "nodeX": 0,
+              "nodeY": -600,
+              "color": [
+                0.5,
+                0.05000000074505806,
+                0.5
+              ],
+              "pars": {},
+              "text": "\t\r\n",
+              "children": []
+            },
+            {
+              "name": "valuesParexec",
+              "type": "parameterexecuteDAT",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/output/valuesParexec",
+              "nodeX": 0,
+              "nodeY": -775,
+              "color": [
+                0.75,
+                0.75,
+                0.75
+              ],
+              "pars": {},
+              "text": "def onValueChange(par, prev):\n\tparNum = par.name[-1]\n\tfor name in ['Onvaluechangescript', 'Ontooffscript', 'Offtoonscript']:\n\t\ttry:\n\t\t\tp = getattr(parent.Widget.par, name + parNum)\n\t\texcept:\n\t\t\treturn\n\t\tif p:\n\t\t\tif p.name.startswith('Onv'):\n\t\t\t\trun(p, fromOP = parent.Widget, asParameter=True)\n\t\t\telif p.name.startswith('Ont') and prev and not par.eval():\n\t\t\t\trun(p, fromOP = parent.Widget, asParameter=True)\n\t\t\telif p.name.startswith('Off') and not prev and par.eval():\n\t\t\t\trun(p, fromOP = parent.Widget, asParameter=True)\n\ndef onPulse(par):\n\tif not parent.Widget.par.Valueparexec.eval():\n\t\tparexec = parent.Widget.parent().create(parameterexecuteDAT, 'valueParExec')\n\t\tparexec.nodeY = parent.Widget.nodeY\n\t\tparexec.nodeX = parent.Widget.nodeX - 200\n\t\tparexec.dock = parent.Widget\n\t\tparexec.par.op.expr = 'me.dock'\n\t\tparexec.par.pars = 'Value?'\n\t\tparexec.par.builtin = False\n\t\tparent.Widget.par.Valueparexec = parexec.name\n\t\tparent.Widget.par.Valueparexec.enable = True\n\t\tparent.Widget.par.Valueparexec.readOnly = True\n\t\top('valueParOPExec').cook(force=True)\n\tparent.Widget.par.Valueparexec.eval().par.edit.pulse()",
+              "children": []
+            },
+            {
+              "name": "valueParOPExec",
+              "type": "opexecuteDAT",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/output/valueParOPExec",
+              "nodeX": 200,
+              "nodeY": -775,
+              "color": [
+                0.75,
+                0.75,
+                0.75
+              ],
+              "pars": {},
+              "text": "def onOPdelete():\n\tparent.Widget.par.Valueparexec = ''\n\tparent.Widget.par.Valueparexec.enable = False\t",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "overlay",
+          "type": "containerCOMP",
+          "path": "/project1/MyUI/ModalDialog/sliderHorz/overlay",
+          "nodeX": 0,
+          "nodeY": 200,
+          "color": [
+            0.5,
+            0.20000000298023224,
+            0.05000000074505806
+          ],
+          "pars": {
+            "x": 0,
+            "y": 0,
+            "w": 400,
+            "h": 300,
+            "layer": 100000.0,
+            "display": false,
+            "enable": true,
+            "bgcolorr": 0.2,
+            "bgcolorg": 0.2,
+            "bgcolorb": 0.2,
+            "bgalpha": 0.65,
+            "borderaalpha": 1.0,
+            "borderbr": 0.0,
+            "borderbg": 0.0,
+            "borderbb": 0.0,
+            "borderbalpha": 1.0,
+            "leftborder": "off",
+            "rightborder": "off",
+            "bottomborder": "off",
+            "topborder": "off",
+            "opacity": 1.0,
+            "justifyh": "off",
+            "justifyv": "off"
+          },
+          "text": null,
+          "children": []
+        },
+        {
+          "name": "slider0",
+          "type": "sliderCOMP",
+          "path": "/project1/MyUI/ModalDialog/sliderHorz/slider0",
+          "nodeX": 600,
+          "nodeY": -500,
+          "color": [
+            0.5,
+            0.3499999940395355,
+            0.05000000074505806
+          ],
+          "pars": {
+            "label": "",
+            "value0": 0.0,
+            "colorr": 0.5,
+            "colorg": 0.5,
+            "colorb": 0.5,
+            "x": 0,
+            "y": 0,
+            "w": 30,
+            "h": 30,
+            "layer": 1.0,
+            "display": true,
+            "enable": true,
+            "bgcolorr": 0.0,
+            "bgcolorg": 0.0,
+            "bgcolorb": 0.0,
+            "bgalpha": 0.0,
+            "borderaalpha": 0.0,
+            "borderbr": 0.0,
+            "borderbg": 0.0,
+            "borderbb": 0.0,
+            "borderbalpha": 1.0,
+            "leftborder": "off",
+            "rightborder": "off",
+            "bottomborder": "off",
+            "topborder": "off",
+            "opacity": 1.0,
+            "justifyh": "off",
+            "justifyv": "center"
+          },
+          "text": null,
+          "children": [
+            {
+              "name": "bg",
+              "type": "nullTOP",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/slider0/bg",
+              "nodeX": 1200,
+              "nodeY": -600,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {
+                "resolutionw": 256,
+                "resolutionh": 256
+              },
+              "text": null,
+              "children": []
+            },
+            {
+              "name": "knob",
+              "type": "selectTOP",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/slider0/knob",
+              "nodeX": 0,
+              "nodeY": -100,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {
+                "resolutionw": 256,
+                "resolutionh": 256
+              },
+              "text": null,
+              "children": []
+            },
+            {
+              "name": "text",
+              "type": "textCOMP",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/slider0/text",
+              "nodeX": 400,
+              "nodeY": 0,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {
+                "text": "Slider",
+                "fontsize": 9.0,
+                "fontcolorr": 0.7,
+                "fontcolorg": 0.7,
+                "fontcolorb": 0.7,
+                "fontalpha": 1.0,
+                "alignx": "center",
+                "aligny": "center",
+                "x": 0,
+                "y": 0,
+                "w": 400,
+                "h": 300,
+                "layer": 0.0,
+                "display": true,
+                "enable": true,
+                "bgcolorr": 0.0,
+                "bgcolorg": 0.0,
+                "bgcolorb": 0.0,
+                "bgalpha": 0.0,
+                "borderaalpha": 1.0,
+                "borderbr": 0.0,
+                "borderbg": 0.0,
+                "borderbb": 0.0,
+                "borderbalpha": 1.0,
+                "leftborder": "off",
+                "rightborder": "off",
+                "bottomborder": "off",
+                "topborder": "off",
+                "opacity": 1.0,
+                "justifyh": "off",
+                "justifyv": "off"
+              },
+              "text": null,
+              "children": []
+            },
+            {
+              "name": "flip1",
+              "type": "flipTOP",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/slider0/flip1",
+              "nodeX": 400,
+              "nodeY": -400,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {
+                "resolutionw": 256,
+                "resolutionh": 256
+              },
+              "text": null,
+              "children": []
+            },
+            {
+              "name": "over1",
+              "type": "overTOP",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/slider0/over1",
+              "nodeX": 600,
+              "nodeY": -500,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {
+                "justifyh": "center",
+                "justifyv": "center",
+                "resolutionw": 256,
+                "resolutionh": 256
+              },
+              "text": null,
+              "children": []
+            },
+            {
+              "name": "level1",
+              "type": "levelTOP",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/slider0/level1",
+              "nodeX": 300,
+              "nodeY": -600,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {
+                "opacity": 1.0,
+                "resolutionw": 256,
+                "resolutionh": 256
+              },
+              "text": null,
+              "children": []
+            },
+            {
+              "name": "slider",
+              "type": "glslmultiTOP",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/slider0/slider",
+              "nodeX": 200,
+              "nodeY": -200,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {
+                "color": 0,
+                "resolutionw": 2531,
+                "resolutionh": 26
+              },
+              "text": null,
+              "children": []
+            },
+            {
+              "name": "switch1",
+              "type": "switchTOP",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/slider0/switch1",
+              "nodeX": 800,
+              "nodeY": -300,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {
+                "resolutionw": 256,
+                "resolutionh": 256
+              },
+              "text": null,
+              "children": []
+            },
+            {
+              "name": "switch2",
+              "type": "switchTOP",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/slider0/switch2",
+              "nodeX": 1000,
+              "nodeY": -600,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {
+                "resolutionw": 256,
+                "resolutionh": 256
+              },
+              "text": null,
+              "children": []
+            },
+            {
+              "name": "rollover",
+              "type": "containerCOMP",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/slider0/rollover",
+              "nodeX": 400,
+              "nodeY": 200,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {
+                "x": 0,
+                "y": 0,
+                "w": 400,
+                "h": 300,
+                "layer": 7.0,
+                "display": false,
+                "enable": true,
+                "bgcolorr": 0.9,
+                "bgcolorg": 0.9,
+                "bgcolorb": 0.9,
+                "bgalpha": 0.15,
+                "borderaalpha": 1.0,
+                "borderbr": 0.0,
+                "borderbg": 0.0,
+                "borderbb": 0.0,
+                "borderbalpha": 1.0,
+                "leftborder": "off",
+                "rightborder": "off",
+                "bottomborder": "off",
+                "topborder": "off",
+                "opacity": 1.0,
+                "justifyh": "off",
+                "justifyv": "off"
+              },
+              "text": null,
+              "children": []
+            },
+            {
+              "name": "sliderBg",
+              "type": "selectTOP",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/slider0/sliderBg",
+              "nodeX": 0,
+              "nodeY": -300,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {
+                "resolutionw": 256,
+                "resolutionh": 256
+              },
+              "text": null,
+              "children": []
+            },
+            {
+              "name": "SliderExt",
+              "type": "textDAT",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/slider0/SliderExt",
+              "nodeX": -325,
+              "nodeY": 400,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {},
+              "text": "SubWidgetExt = mod.SubWidgetExt.SubWidgetExt\nTDF = op.TDModules.mod.TDFunctions\n\nclass SliderExt(SubWidgetExt):\n\t\"\"\"\n\tValueExt is an extension that controls multiple values for a value component.\n\tA value component is a widget sub component that visualizes and provides\n\tinteractivity for setting values.\n\t\"\"\"\n\tdef __init__(self, ownerComp, dimension=1):\n\t\t# The component to which this extension is attached\n\t\t\"\"\"\n\t\tThis extension inpterprets panel interactions and controls the\n\t\tmasterSlider widget values.\n\t\t\"\"\"\n\t\tself.parPrefix = 'Slider'\n\t\tSubWidgetExt.__init__(self, ownerComp)\n\t\tself.widgetComp = self.ownerComp.parent.Widget\n\t\t#Dimesion refers to the dimension of this sub-component.  A slider\n\t\t#found in an RGBA widget will have a dimension of 1, while a range\n\t\t#slider will have a dimension of 2 since it requires two values\n\t\t#for the single ui element\n\t\tself.dimension = dimension\n\t\t#The value group index allows for multiple range faders in the same\n\t\t#widget\n\t\tself.valueGroupIndex = 0 #math.floor(self.ownerComp.digits/self.dimension)\n\t\t#Slider variables\n\t\tself.LoadSliderAttribs(self.valueGroupIndex)\n\n\t\tself.select = False\n\t\tself.insideKnob = False\n\t\tself.lastClickPos = None\n\t\t#The current normalized values\n\n\t\tself.knobIndex = None\n\t\t#The function to use to process incoming ValueChange events\n\t\tself.valueProc = None\n\t\t#The current start values\n\t\tself.startValues = []\n\t\tself.curValues = []\n\t\tself.startDiffs = []\n\n\tdef LoadSliderAttribs(self, groupIndex):\n\t\t\"\"\"\n\t\tPreloads the slider values for the Value component.\n\t\t\"\"\"\n\t\t#debug('inside', groupIndex)\n\t\tself.index = groupIndex\n\t\tself.res = [getattr(self.ownerComp, i) for i in ['width', 'height']]\n\t\tself.knobWidth = self.ownerComp.parent.Widget.par.Sliderknobsize.eval()\n\t\tself.orient = self.ownerComp.parent.Widget.par.Sliderorient.menuIndex\n\t\t#Needs to avoid division by zero error\n\t\tself.normKnobWidth = (self.knobWidth / self.res[self.orient]) if self.res[self.orient] > 0 else 0\n\t\tself.knobMargin = self.normKnobWidth/2\n\t\tself.panelVar = self.ownerComp.panel.v if self.orient \\\n\t\t\t\t\t\t\t\t\t\t\t\t\telse self.ownerComp.panel.u\n\t\tself.normSliderMin = self.normKnobWidth/2\n\t\tself.normSliderMax = 1-(self.normKnobWidth/2)\n\t\tself.Pars = [getattr(self.ownerComp.parent.Widget.par, \\\n\t\t\t\t\t\t\t\t'Value'+str(i)) for i in range(self.dimension)]\n\t\tself.Values = [Value(self.widgetComp, par[1],\n\t\t\t\t\t\t\t\tself.valueGroupIndex+par[0]) \\\n\t\t\t\t\t\t\t\tfor par in enumerate(self.Pars)]\n\t\tself.relativeMode = self.ownerComp.parent.Widget.par.Sliderrelativemode.eval()\n\n\n\tdef ValueChange(self, panelValue):\n\t\t\"\"\"\n\t\tHandles a value change taking into consideration all the attributes\n\t\tof this slider sub-component.\n\t\t\"\"\"\n\t\t#debug('val chan')\n\t\tif self.select:\n\t\t\t#debug('vc')\n\t\t\tif not parent.Widget.par.Sliderviewonly.eval():\n\t\t\t\tself.valueProc(panelValue.val, self.knobIndex)\n\n\n\tdef SelectOn(self):\n\t\t\"\"\"\n\t\tGathers information when the panel is initially selected. The\n\t\tinformation is used when interaction with the widget sub-component\n\t\tpanel generates valueChange callback events. These events are\n\t\tsubsequently handled by the ValueChange() method of this class.\n\t\t\"\"\"\n\t\t#knobClickIndex will be None if not clicked or knob index if a knob\n\t\t#was clicked\n\t\tknobIndex = self.checkKnobClick()\n\t\t#debug('knob', knobIndex)\n\t\tif knobIndex is None:\n\t\t\tself.valueProc = self.valueChangeSlider\n\t\telse:\n\t\t\tself.valueProc = self.valueChangeKnob\n\t\tself.select = True\n\n\tdef SelectOff(self):\n\t\t\"\"\"\n\t\tTurns off select state for this value.\n\t\t\"\"\"\n\t\tself.select = False\n\t\tself.mode = None\n\t\tself.valueProc = None\n\t\tself.insideKnob = False\n\t\tself.lastClickPos = None\n\n\tdef reNormalizeWithKnobs(self, knobMargin):\n\t\t\"\"\"\n\t\tThis function allows for renormalizing the normalized values\n\t\ttaking into consideration the knob size.\n\t\t\"\"\"\n\t\treturn [remap(val, 0, 1, knobMargin, 1-(knobMargin)) \\\n\t\t\t\t\t\t\t\t\t\t\tfor val in self.getNormValues()]\n\t\t#return [remap(val, 0, 1, 0, 1) for val in self.getNormValues()]\n\n\tdef checkKnobClick(self):\n\t\t\"\"\"\n\t\tChecks if click was inside a knob or not.  Returns None if not or the\n\t\tknob index starting at 0 if a knob was clicked.\n\t\t\"\"\"\n\t\t#knobMargin = self.normKnobWidth/2\n\t\tnormValues = self.reNormalizeWithKnobs(self.knobMargin)\n\t\tpval = self.panelVar.val\n\t\tknobIndex = None\n\t\tfor i in range(self.dimension):\n\t\t\t#print('check', pval, normValues[i]-(self.knobMargin), normValues[i]+(self.knobMargin), self.knobMargin, self.knobWidth)\n\t\t\tif pval > normValues[i]-(self.knobMargin) and \\\n\t\t\t\t\t\t\t\t\t\tpval < (normValues[i]+(self.knobMargin))\\\n\t\t\t\t\t\t\t\t\t\tor self.relativeMode:\n\t\t\t\t#print('knobClick')\n\t\t\t\tself.startValues = self.getNormValues()\n\t\t\t\t#debug('startValues set', self.startValues)\n\t\t\t\tself.lastClickPos = pval\n\t\t\t\tself.insideKnob = True\n\t\t\t\tknobIndex = i\n\t\t\t\tself.knobIndex = knobIndex\n\t\t\t\tbreak\n\t\t\telse:\n\t\t\t\tself.startValues = self.getNormValues()\n\t\t\t\t#debug('startValues set', self.startValues)\n\t\t\t\tself.lastClickPos = pval\n\t\t\t\tself.insideKnob = False\n\t\t\t\tself.knobClickOffset = None\n\t\t\t\tself.startDiffs = sorted([(i[0], abs(pval - i[1])) for i \\\n\t\t\t\t\t\t\tin enumerate(normValues)], key=lambda tup: tup[1])\n\n\t\treturn knobIndex\n\n\tdef setValue(self, value, index):\n\t\t#self.widgetComp.SetValueNorm(value,\tindex)\n\t\t#protoEdit\n\t\t#debug('setValue')\n\t\tif not parent.Widget.par.Sliderviewonly.eval():\n\t\t\tgetattr(parent.Widget.par, 'Value'+ str(parent().digits)).normVal = value\n\n\tdef getNormValues(self):\n\t\treturn [self.Values[v].normValue for v in range(self.dimension)]\n\n\tdef getNormMin(self, index):\n\t\treturn self.Values[index].normMin\n\n\tdef getNormMax(self, index):\n\t\treturn self.Values[index].normMax\n\n\tdef valueChangeKnob(self, pVal, valueIndex):\n\t\t\"\"\"\n\t\tChanges value using the knob.  This generates a value change only if\n\t\tthe knob is moved.  Clicking anywhere on the knob will not change\n\t\tthe value.\n\t\t\"\"\"\n\t\tvalueIndex = valueIndex+self.valueGroupIndex\n\t\t#debug(valueIndex, 'startvs', self.startValues)\n\t\toffset = (pVal-self.lastClickPos)*(1/(1-(self.normKnobWidth)))\n\t\tvalue = (offset + self.startValues[0])\n\t\t#value = max(0, min(value, 1))\n\t\t#debug('knob', value)\n\t\tvalue = self.Values[valueIndex].valueClampFunc(value)\n\t\tself.setValue(value, valueIndex)\n\n\tdef valueChangeSlider(self, pVal, valueIndex):\n\t\t\"\"\"\n\t\tChanges value not using the knob.  This generates a value change only\n\t\tif the slider area with no knob is selected.\n\t\t\"\"\"\n\t\t#print(pVal)\n\t\tif valueIndex is not None:\n\t\t\tvalueIndex = valueIndex+self.valueGroupIndex\n\t\telse:\n\t\t\tvalueIndex = self.valueGroupIndex\n\t\tvalue = remap(pVal, self.normSliderMin, self.normSliderMax, 0, 1)\n\t\t#value = max(0, min(value, 1))\n\t\tvalue = self.Values[valueIndex].valueClampFunc(value)\n\t\t#debug('slider', value)\n\n\t\t##TextCOMP refactor 11/9/2021 - Jarrett\n\t\t##value = round(value, parent.Widget.par.Sliderdecimalplaces.eval())\n\n\t\tself.setValue(value, valueIndex)\n\n\tdef onPanelEvent(self, event, panelValue):\n\t\t\"\"\"\n\t\t\"\"\"\n\t\tif event == 'offToOn' and panelValue.name == 'select':\n\t\t\tparent.Value.SelectOn()\n\t\telif event == 'onToOff' and panelValue.name == 'select':\n\t\t\tparent.Value.SelectOff()\n\t\telif panelValue.name in ['u', 'v']:\n\t\t\tparent.Value.ValueChange(panelValue)\n\nclass Value:\n\t\"\"\"\n\tHolds value parameter for widgets and provides common features for\n\tgetting and setting values.\n\t\"\"\"\n\tdef __init__(self, widgetComp, valuePar, index):\n\t\tself.widgetComp = widgetComp\n\t\tself.valuePar = valuePar\n\t\tself.valueIndex = index\n\t\tself.currentValue = None\n\t\tself.lastValue = None\n\t\t#self.knobClampMinMax = [widgetComp.par.Sliderclampmin.eval(),\n\t\t#\t\t\t\twidgetComp.par.Sliderclampmax.eval()]\n\t\tself.knobClampMinMax = [getattr(widgetComp.par, 'Value'+str(self.valueIndex)).clampMin,\n\t\t\t\t\t\tgetattr(widgetComp.par, 'Value'+str(self.valueIndex)).clampMax]\n\t\t#self.normMin = getattr(widgetComp.par, 'Normminmax' + str(index) + '1').eval()\n\t\tself.normMin = getattr(widgetComp.par, 'Value'+ str(index)).normMin\n\t\t#self.normMax = getattr(widgetComp.par, 'Normminmax' + str(index) + '2').eval()\n\t\tself.normMax = getattr(widgetComp.par, 'Value'+ str(index)).normMax\n\t\tif self.knobClampMinMax[0] and self.knobClampMinMax[1]:\n\t\t\tself.valueClampFunc = self.clampMinMax\n\t\telif self.knobClampMinMax[0] and not self.knobClampMinMax[1]:\n\t\t\tself.valueClampFunc = self.clampMin\n\t\telif not self.knobClampMinMax[0] and self.knobClampMinMax[1]:\n\t\t\tself.valueClampFunc = self.clampMax\n\t\telse:\n\t\t\tself.valueClampFunc = self.clampOff\n\t\tself.valueUpdate()\n\n\tdef valueUpdate(self):\n\t\t#debug('valueUpdate')\n\t\tself.lastValue = self.currentValue\n\t\tself.currentValue = self.valuePar.eval()\n\n\tdef clampMax(self, value):\n\t\treturn  min(value, 1)\n\n\tdef clampMin(self, value):\n\t\treturn  max(0, value)\n\n\tdef clampMinMax(self, value):\n\t\treturn  max(0, min(value, 1))\n\n\tdef clampOff(self, value):\n\t\treturn value\n\n\t@property\n\tdef normValue(self):\n\t\t#return self.widgetComp.GetValueNorm(self.valueIndex)\n\t\t#protoEdit\n\t\treturn getattr(parent.Widget.par, 'Value'+ str(self.valueIndex)).evalNorm()\n\ndef remap(val, fromMin, fromMax, toMin, toMax):\n\t\"\"\"\n\tRemaps val to a new range.\n\t\"\"\"\n\n\tresult = ( (val - fromMin) / (fromMax - fromMin) ) * (toMax - toMin) + toMin\n\n\treturn result\n",
+              "children": []
+            },
+            {
+              "name": "parReinit",
+              "type": "parameterexecuteDAT",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/slider0/parReinit",
+              "nodeX": -700,
+              "nodeY": 300,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {},
+              "text": "# me - this DAT\n# par - the Par object that has changed\n# val - the current value\n# prev - the previous value\n# \n# Make sure the corresponding toggle is enabled in the Parameter Execute DAT.\n\ndef onValueChange(par, val, prev):\n\tparent().par.reinitextensions.pulse()\n\treturn\n\ndef onPulse(par):\n\treturn\n\ndef onExpressionChange(par, val, prev):\n\treturn\n\ndef onExportChange(par, val, prev):\n\treturn\n\ndef onEnableChange(par, val, prev):\n\treturn\n\ndef onModeChange(par, val, prev):\n\treturn\n\t",
+              "children": []
+            },
+            {
+              "name": "glslSlider",
+              "type": "textDAT",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/slider0/glslSlider",
+              "nodeX": 200,
+              "nodeY": -300,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {},
+              "text": "//horizontal slider: 0, vertical slider: 1\nuniform int orient;\n//the widget's current normalized value\nuniform float nrmValue;\nuniform float defaultValue;\nuniform vec2 minMax;\nuniform vec4 bgColor;\nuniform vec4 indColor;\nuniform vec4 knobColor;\nuniform int knobSize;\n//uniform float pOffset;\n//uniform float scale;\n\nlayout(location = 0) out vec4 fragColor;\n\nfloat map(float s, float a1, float a2, float b1, float b2)\n{\n    return b1 + (s-a1)*(b2-b1)/(a2-a1);\n}\n\nvec4 over(vec4 tOver, vec4 tUnder)\n{\n    return ((1.0-tOver.a)*tUnder) + tOver.a * tOver;\n}\n\nvoid main() {\n\n    //level use v if orient is 1 else use u\n    float level = orient == 1.0 ? vUV.t : vUV.s;\n\t//Flips the incoming text and textures to the correct orientation\n\tvec2 fUV = orient == 1.0 ? (vec2(0.0, 1.0)\n\t\t\t\t\t\t\t\t+ (vUV.ts*vec2(1.0, -1.0))) : vUV.st;\n\tfloat coord = orient == 1.0 ? gl_FragCoord.y : gl_FragCoord.x;\n    float sliderPixLength = uTD2DInfos[0].res.z;\n\tvec4 color = vec4(0.0);\n\t//ranged value\n\tfloat rmin = minMax.x;\n\tfloat rmax = minMax.y;\n\t//normalize knob size\n\tfloat nmKnobSize = knobSize / sliderPixLength;\n\tfloat nmKnobSizeH = nmKnobSize/2.0;\n\tfloat nmDefault = (defaultValue-rmin) / (rmax - rmin);\n\tfloat nmValueKnob = nrmValue * (1-nmKnobSize) + nmKnobSizeH;\n    float pOffset = -nrmValue * ((sliderPixLength-knobSize) / knobSize);\n    float scale = sliderPixLength / knobSize;\n    //knob uv\n    vec2 knobUV =  vec2(fUV.s*scale+pOffset, fUV.t);\n\n    //load textures\n    //vec4 textLayer = texture(sTD2DInputs[0], fUV);\n\tvec4 bgLayer = texture(sTD2DInputs[1], fUV);\n\tvec4 knobLayer = texture(sTD2DInputs[0], knobUV);\n\n\t//Level indicator color\n    if (level < nmValueKnob-(nmKnobSizeH) && level > nmDefault ||\n\t\t\t\t\tlevel < nmDefault && level >\n                    nmValueKnob+(nmKnobSizeH))\n\t//slider range color\n    {\n        color = over(indColor, color);\n  \t}\n    else\n\t//slider bg color\n  \t{\n  \t   color = bgColor;\n  \t}\n\t//remap slider range in consideration of knob width\n\tfloat remapValue = map(nrmValue, 0, 1, nmKnobSizeH,\n                                                1-(nmKnobSizeH));\n    //float remapValue = map(normValue, 0, 1, 0, 1);\n    //knob color\n\tif (level > (remapValue - (nmKnobSizeH)) &&\n\t\t\t\t\t\t\t\t      level < (remapValue + (nmKnobSizeH)))\n    //knob color and texture\n    {\n    color = over(knobColor, color);\n    color = over(knobLayer, color);\n    }\n\t//Texture mix\n    color = over(color, bgLayer);\n    //color = over(textLayer, color);\n    //color = vec4(orient);\n    //color = vec4(float(level < (remapValue + (nmKnobSizeH))));\n    //color = vec4(uTD2DInfos[0].res.z);\n\tfragColor = color;\n}\n",
+              "children": []
+            },
+            {
+              "name": "panelexec1",
+              "type": "panelexecuteDAT",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/slider0/panelexec1",
+              "nodeX": -550,
+              "nodeY": 0,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {},
+              "text": "# me - this DAT\n# panelValue - the PanelValue object that changed\n# prev - the previous value of the PanelValue object that changed\n# Make sure the corresponding toggle is enabled in the Panel Execute DAT.\n\ndef onOffToOn(panelValue):\n\treturn\n\ndef whileOn(panelValue):\n\treturn\n\ndef onOnToOff(panelValue):\n\treturn\n\ndef whileOff(panelValue):\n\treturn\n\ndef onValueChange(panelValue, prev):\n\treturn\n\t",
+              "children": []
+            },
+            {
+              "name": "SubWidgetExt",
+              "type": "textDAT",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/slider0/SubWidgetExt",
+              "nodeX": -500,
+              "nodeY": 400,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {},
+              "text": "TDF = op.TDModules.mod.TDFunctions\n\nclass SubWidgetExt:\n\t\"\"\"\n\tSubWidgetExt description\n\t\"\"\"\n\n\tdef __init__(self, ownerComp, indexComp=None):\n\t\t# The component to which this extension is attached\n\t\tself.ownerComp = ownerComp\n\t\tif indexComp:\n\t\t\tself.indexComp = indexComp\n\t\telse:\n\t\t\tself.indexComp = self.ownerComp\n\n\tdef onPanelEvent(self, event, panelValue):\n\t\t\"\"\"\n\t\tPanel exec events from widget\n\t\t\"\"\"\n\t\tpass\n\n\tdef onParSettingsChange(self, par, prev):\n\t\t\"\"\"\n\t\tManages value changes widget settings parameters\n\t\t\"\"\"\n\t\tval = par.eval()\n\t\tif par.name == self.parPrefix + 'runcommand':\n\t\t\tenable = par.eval()\n\t\t\tfor suffix in ['commandon', 'commandoff', 'commandonvaluechange']:\n\t\t\t\tp = self.prefixPar(suffix)\n\t\t\t\tif p is not None:\n\t\t\t\t\tp.enable = enable\n\t\telif par.name == self.parPrefix + 'horizontalmode':\n\t\t\tfill = True if val == 'fill' else False\n\t\t\tself.prefixPar('hfillweight').enable = fill\n\t\t\tself.prefixPar('width').enable = not fill\n\t\telif par.name == self.parPrefix + 'verticalmode':\n\t\t\tfill = True if val == 'fill' else False\n\t\t\tself.prefixPar('vfillweight').enable = fill\n\t\t\tself.prefixPar('height').enable = not fill\n\t\telif par.name in [self.parPrefix + 'bordera',\n\t\t\t\t\t\t  self.parPrefix + 'borderb',\n\t\t\t\t\t\t  self.parPrefix + 'border']:\n\t\t\tgetattr(parent.Widget.par, par.name + 'colorr').enable = par.eval()\n\n\tdef onParSettingsPulse(self, par):\n\t\t\"\"\"\n\t\tManages pulse events for widget settings parameters\n\t\t\"\"\"\n\t\tif par.name == self.parPrefix + 'customizeinteraction':\n\t\t\tself.makePanelExecute()\n\n\tdef onToggleEvent(self, event, panelValue):\n\t\tif event == 'offToOn':\n\t\t\tself.toggle()\n\n\tdef toggle(self):\n\t\tindex = self.indexComp.digits\n\t\tvaluePar = getattr(parent.Widget.par, 'Value' + str(index))\n\t\tvaluePar.val = 1 - valuePar.eval()\n\n\tdef prefixPar(self, suffix):\n\t\t\"\"\"\n\t\tReturn a parameter prefixed by parPrefix\n\t\t:param suffix: the par name after parPrefix (string)\n\t\t:return: the parameter or None if not found\n\t\t\"\"\"\n\t\treturn getattr(self.ownerComp.parent.Widget.par,\n\t\t\t\t\t   self.parPrefix + suffix, None)\n\n\tdef getDockExpressionToOwner(self):\n\t\tpage = TDF.getCustomPage(self.ownerComp.parent.Widget, 'OPs')\n\t\texpr = \"me.dock.op('\" + self.ownerComp.name + \"')\"\n\t\tfor p in page.pars:\n\t\t\tif p.eval() == self.ownerComp:\n\t\t\t\texpr = \"me.dock.par.\" + p.name + \".eval()\"\n\t\t\t\tbreak\n\t\treturn expr\n\n\tdef makePanelExecute(self, panelExpr=None):\n\t\t\"\"\"\n\t\tCreates a panel execute DAT for running external code from the\n\t\twidget that is connected to the button interaction receiver - which\n\t\tis the ownerComp of this class\n\n\t\tpanelExpr: will be used as the expression in the panel parameter of the\n\t\t\tpanelExec. Defaults to \"me.dock.op('\" + self.ownerComp.name +\"')\"\n\t\t\"\"\"\n\t\tpanelExecPar = self.PanelExecPar\n\t\tpeDat = panelExecPar.eval()\n\t\texpr = self.getDockExpressionToOwner() \\\n\t\t\t\t\t\t\t\t\t\t\tif panelExpr is None else panelExpr\n\t\tif not peDat:\n\t\t\tpeDat = self.ownerComp.parent.Widget.parent().create(\n\t\t\t\tpanelexecuteDAT, self.parPrefix + 'PanelExec')\n\t\t\tpeDat.nodeX = self.ownerComp.parent.Widget.nodeX - 200\n\t\t\tpeDat.nodeY = self.ownerComp.parent.Widget.nodeY\n\t\t\tpeDat.dock = self.ownerComp.parent.Widget\n\t\t\tpeDat.par.panel.expr = expr\n\t\t\tpeDat.par.ontooff = True\n\t\t\tpeDat.viewer = True\n\t\t\tpanelExecPar.val = peDat.name\n\t\t\tpanelExecPar.enable = True\n\t\t\tpanelExecPar.readOnly = True\n\t\t\tself.ownerComp.op('panelExecOPExec').cook(force=True)\n\t\telse:\n\t\t\tif expr not in peDat.par.panel.expr:\n\t\t\t\tpeDat.par.panel.expr += ', ' + expr\n\t\tpanelExecPar.eval().par.edit.pulse()\n\n\t@property\n\tdef PanelExecPar(self):\n\t\treturn getattr(parent.Widget.par, self.parPrefix + 'panelexec', None)\n\n",
+              "children": []
+            },
+            {
+              "name": "cacheselect1",
+              "type": "cacheselectTOP",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/slider0/cacheselect1",
+              "nodeX": 100,
+              "nodeY": -700,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {},
+              "text": null,
+              "children": []
+            },
+            {
+              "name": "panelExecOPExec",
+              "type": "opexecuteDAT",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/slider0/panelExecOPExec",
+              "nodeX": -700,
+              "nodeY": 100,
+              "color": [
+                0.05000000074505806,
+                0.5,
+                0.05000000074505806
+              ],
+              "pars": {},
+              "text": "def onOPdelete():\n\text.SubWidgetExt.PanelExecPar.val = ''\n\text.SubWidgetExt.PanelExecPar.enable = False\t",
+              "children": []
+            },
+            {
+              "name": "panelexecValueX",
+              "type": "panelexecuteDAT",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/slider0/panelexecValueX",
+              "nodeX": -700,
+              "nodeY": 0,
+              "color": [
+                0.05000000074505806,
+                0.5,
+                0.05000000074505806
+              ],
+              "pars": {},
+              "text": "def offToOn(panelValue):\n\text.SubWidgetExt.onPanelEvent('offToOn', panelValue)\n\ndef onToOff(panelValue):\n\text.SubWidgetExt.onPanelEvent('onToOff', panelValue)\n\ndef valueChange(panelValue):\n\text.SubWidgetExt.onPanelEvent('valueChange', panelValue)\n",
+              "children": []
+            },
+            {
+              "name": "text1_callbacks",
+              "type": "textDAT",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/slider0/text1_callbacks",
+              "nodeX": 400,
+              "nodeY": -150,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {},
+              "text": "# Text Component callbacks\n\ndef onValueChange(comp, value, prevValue):\n\t\"\"\"\n\tCalled whenever the text component's value parameter changes for any reason including typing\n\tin the text window or changing the parameter directly. The callback is equivalent to the\n\tonValueChange in the parameter exectute DAT.\n\t\n\tArgs:\n\t\tcomp: the text component\n\t\tvalue: the new value\n\t\tprevValue: the previous value\n\t\"\"\"\n\t#debug('\\nonValueChange comp:', comp.path, '- new value: ', value, ', prev value: ', prevValue )\n\treturn\n\t\ndef onFocus(comp):\n\t\"\"\"\n\tCalled when one of the text components viewers gets keyboard focus. \n\t\n\tArgs:\n\t\tcomp: the text component\n\t\"\"\"\n\t#debug('\\nonFocus comp:', comp.path)\n\treturn\n\ndef onFocusEnd(comp, info):\n\t\"\"\"\n\tCalled when one of the text component's viewers loses keyboard focus. In regular editing mode\n\tthis is right after the contents are saved back to the value parameter. This function is called\n\teverytime the viewer loses focus, even if the text does not change.\n\t\n\tArgs:\n\t\tcomp: the text component\n\t\tinfo: a dictionary containing information about the event including:\n\t\t\treason: a string indicating what caused the viewer to lose focus e.g. 'enter', 'escape', 'tab', 'unknown'\n\t\n\t\"\"\"\n\t#debug('\\nonFocusEnd comp:', comp.path, '- info:\\n', info)\n\treturn\n\t\ndef onTextEdit(comp):\n\t\"\"\"\n\tCalled each time the contents of the text component viewer change i.e. when typing a character,\n\tdeleting text, cutting or pasting. \n\t\n\tArgs:\n\t\tcomp: the text component\n\t\"\"\"\n\t#debug('\\nonTextEdit comp:', comp.path, '- text: ', comp.editText)\n\treturn\n\t\ndef onTextEditEnd(comp, value, prevValue):\n\t\"\"\"\n\tCalled when the user finishes editing and the value has been changed. Not called in 'Continuous Edit' mode. Use\n\tonTextEdit and onFocusEnd when using continuous editing.\n\t\n\tArgs:\n\t\tcomp: the text component\n\t\tvalue: the new value\n\t\tprevValue: the previous value\n\t\"\"\"\n\t#debug('\\nonTextEditEnd comp:', comp.path, '- new value: ', value, ', prev value: ', prevValue )\n\treturn\n\t\n\t",
+              "children": []
+            },
+            {
+              "name": "parexecSettingsX",
+              "type": "parameterexecuteDAT",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/slider0/parexecSettingsX",
+              "nodeX": -700,
+              "nodeY": 200,
+              "color": [
+                0.05000000074505806,
+                0.5,
+                0.05000000074505806
+              ],
+              "pars": {},
+              "text": "def valueChange(par, val, prev):\n\text.SubWidgetExt.onParSettingsChange(par, prev)\n\ndef onPulse(par):\n\text.SubWidgetExt.onParSettingsPulse(par)\n\n",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "valueOut",
+          "type": "outCHOP",
+          "path": "/project1/MyUI/ModalDialog/sliderHorz/valueOut",
+          "nodeX": 400,
+          "nodeY": 0,
+          "color": [
+            0.6700000166893005,
+            0.6700000166893005,
+            0.6700000166893005
+          ],
+          "pars": {
+            "label": "valueOut"
+          },
+          "text": null,
+          "children": []
+        },
+        {
+          "name": "numericValue0",
+          "type": "containerCOMP",
+          "path": "/project1/MyUI/ModalDialog/sliderHorz/numericValue0",
+          "nodeX": 400,
+          "nodeY": -400,
+          "color": [
+            0.5,
+            0.3499999940395355,
+            0.05000000074505806
+          ],
+          "pars": {
+            "x": 0,
+            "y": 0,
+            "w": 60,
+            "h": 26,
+            "layer": 0.0,
+            "display": true,
+            "enable": true,
+            "bgcolorr": 0.0,
+            "bgcolorg": 0.0,
+            "bgcolorb": 0.0,
+            "bgalpha": 0.0,
+            "borderaalpha": 1.0,
+            "borderbr": 0.0,
+            "borderbg": 0.0,
+            "borderbb": 0.0,
+            "borderbalpha": 1.0,
+            "leftborder": "off",
+            "rightborder": "off",
+            "bottomborder": "off",
+            "topborder": "off",
+            "opacity": 1.0,
+            "justifyh": "off",
+            "justifyv": "center"
+          },
+          "text": null,
+          "children": [
+            {
+              "name": "text",
+              "type": "textCOMP",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/numericValue0/text",
+              "nodeX": 0,
+              "nodeY": 0,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {
+                "text": "0.3088301",
+                "fontsize": 10.0,
+                "fontcolorr": 0.7,
+                "fontcolorg": 0.7,
+                "fontcolorb": 0.7,
+                "fontalpha": 1.0,
+                "alignx": "left",
+                "aligny": "center",
+                "x": 0,
+                "y": 0,
+                "w": 400,
+                "h": 300,
+                "layer": 0.0,
+                "display": true,
+                "enable": true,
+                "bgcolorr": 0.28,
+                "bgcolorg": 0.28,
+                "bgcolorb": 0.28,
+                "bgalpha": 1.0,
+                "borderaalpha": 1.0,
+                "borderbr": 0.0,
+                "borderbg": 0.0,
+                "borderbb": 0.0,
+                "borderbalpha": 1.0,
+                "leftborder": "off",
+                "rightborder": "off",
+                "bottomborder": "off",
+                "topborder": "off",
+                "opacity": 1.0,
+                "justifyh": "off",
+                "justifyv": "off"
+              },
+              "text": null,
+              "children": []
+            },
+            {
+              "name": "panel1",
+              "type": "panelCHOP",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/numericValue0/panel1",
+              "nodeX": 200,
+              "nodeY": 0,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {},
+              "text": null,
+              "children": []
+            },
+            {
+              "name": "rollover",
+              "type": "containerCOMP",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/numericValue0/rollover",
+              "nodeX": 0,
+              "nodeY": -200,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {
+                "x": 0,
+                "y": 0,
+                "w": 400,
+                "h": 300,
+                "layer": 7.0,
+                "display": false,
+                "enable": true,
+                "bgcolorr": 0.9,
+                "bgcolorg": 0.9,
+                "bgcolorb": 0.9,
+                "bgalpha": 0.15,
+                "borderaalpha": 1.0,
+                "borderbr": 0.0,
+                "borderbg": 0.0,
+                "borderbb": 0.0,
+                "borderbalpha": 1.0,
+                "leftborder": "off",
+                "rightborder": "off",
+                "bottomborder": "off",
+                "topborder": "off",
+                "opacity": 1.0,
+                "justifyh": "off",
+                "justifyv": "off"
+              },
+              "text": null,
+              "children": []
+            },
+            {
+              "name": "SubWidgetExt",
+              "type": "textDAT",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/numericValue0/SubWidgetExt",
+              "nodeX": -600,
+              "nodeY": 400,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {},
+              "text": "TDF = op.TDModules.mod.TDFunctions\n\nclass SubWidgetExt:\n\t\"\"\"\n\tRockerExt description\n\t\"\"\"\n\n\tdef __init__(self, ownerComp, indexComp=None):\n\t\t# The component to which this extension is attached\n\t\tself.ownerComp = ownerComp\n\t\tif indexComp:\n\t\t\tself.indexComp = indexComp\n\t\telse:\n\t\t\tself.indexComp = self.ownerComp\n\n\tdef onPanelEvent(self, event, panelValue):\n\t\t\"\"\"\n\t\tPanel exec events from widget\n\t\t\"\"\"\n\t\tpass\n\n\tdef onParSettingsChange(self, par, prev):\n\t\t\"\"\"\n\t\tManages value changes widget settings parameters\n\t\t\"\"\"\n\t\tval = par.eval()\n\t\tif par.name == self.parPrefix + 'runcommand':\n\t\t\tenable = par.eval()\n\t\t\tfor suffix in ['commandon', 'commandoff', 'commandonvaluechange']:\n\t\t\t\tp = self.prefixPar(suffix)\n\t\t\t\tif p is not None:\n\t\t\t\t\tp.enable = enable\n\t\telif par.name == self.parPrefix + 'horizontalmode':\n\t\t\tfill = True if val == 'fill' else False\n\t\t\tself.prefixPar('hfillweight').enable = fill\n\t\t\tself.prefixPar('width').enable = not fill\n\t\telif par.name == self.parPrefix + 'verticalmode':\n\t\t\tfill = True if val == 'fill' else False\n\t\t\tself.prefixPar('vfillweight').enable = fill\n\t\t\tself.prefixPar('height').enable = not fill\n\t\telif par.name in [self.parPrefix + 'bordera',\n\t\t\t\t\t\t  self.parPrefix + 'borderb',\n\t\t\t\t\t\t  self.parPrefix + 'border']:\n\t\t\tgetattr(parent.Widget.par, par.name + 'colorr').enable = par.eval()\n\n\tdef onParSettingsPulse(self, par):\n\t\t\"\"\"\n\t\tManages pulse events for widget settings parameters\n\t\t\"\"\"\n\t\tif par.name == self.parPrefix + 'customizeinteraction':\n\t\t\tself.makePanelExecute()\n\n\tdef onToggleEvent(self, event, panelValue):\n\t\tif event == 'offToOn':\n\t\t\tself.toggle()\n\n\tdef toggle(self):\n\t\tindex = self.indexComp.digits\n\t\tvaluePar = getattr(parent.Widget.par, 'Value' + str(index))\n\t\tvaluePar.val = 1 - valuePar.eval()\n\n\tdef prefixPar(self, suffix):\n\t\t\"\"\"\n\t\tReturn a parameter prefixed by parPrefix\n\t\t:param suffix: the par name after parPrefix (string)\n\t\t:return: the parameter or None if not found\n\t\t\"\"\"\n\t\treturn getattr(self.ownerComp.parent.Widget.par,\n\t\t\t\t\t   self.parPrefix + suffix, None)\n\n\tdef getDockExpressionToOwner(self):\n\t\tpage = TDF.getCustomPage(self.ownerComp.parent.Widget, 'OPs')\n\t\texpr = \"me.dock.op('\" + self.ownerComp.name + \"')\"\n\t\tfor p in page.pars:\n\t\t\tif p.eval() == self.ownerComp:\n\t\t\t\texpr = \"me.dock.par.\" + p.name + \".eval()\"\n\t\t\t\tbreak\n\t\treturn expr\n\n\tdef makePanelExecute(self, panelExpr=None):\n\t\t\"\"\"\n\t\tCreates a panel execute DAT for running external code from the\n\t\twidget that is connected to the button interaction receiver - which\n\t\tis the ownerComp of this class\n\n\t\tpanelExpr: will be used as the expression in the panel parameter of the\n\t\t\tpanelExec. Defaults to \"me.dock.op('\" + self.ownerComp.name +\"')\"\n\t\t\"\"\"\n\t\tpanelExecPar = self.PanelExecPar\n\t\tpeDat = panelExecPar.eval()\n\t\texpr = self.getDockExpressionToOwner() \\\n\t\t\t\t\t\t\t\t\t\t\tif panelExpr is None else panelExpr\n\t\tif not peDat:\n\t\t\tpeDat = self.ownerComp.parent.Widget.parent().create(\n\t\t\t\tpanelexecuteDAT, self.parPrefix + 'PanelExec')\n\t\t\tpeDat.nodeX = self.ownerComp.parent.Widget.nodeX - 200\n\t\t\tpeDat.nodeY = self.ownerComp.parent.Widget.nodeY\n\t\t\tpeDat.dock = self.ownerComp.parent.Widget\n\t\t\tpeDat.par.panel.expr = expr\n\t\t\tpeDat.par.ontooff = True\n\t\t\tpeDat.viewer = True\n\t\t\tpanelExecPar.val = peDat.name\n\t\t\tpanelExecPar.enable = True\n\t\t\tpanelExecPar.readOnly = True\n\t\t\tself.ownerComp.op('panelExecOPExec').cook(force=True)\n\t\telse:\n\t\t\tif expr not in peDat.par.panel.expr:\n\t\t\t\tpeDat.par.panel.expr += ', ' + expr\n\t\tpanelExecPar.eval().par.edit.pulse()\n\n\t@property\n\tdef PanelExecPar(self):\n\t\treturn getattr(parent.Widget.par, self.parPrefix + 'panelexec', None)\n\n",
+              "children": []
+            },
+            {
+              "name": "panelexecValue",
+              "type": "panelexecuteDAT",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/numericValue0/panelexecValue",
+              "nodeX": -400,
+              "nodeY": 0,
+              "color": [
+                0.05000000074505806,
+                0.5,
+                0.05000000074505806
+              ],
+              "pars": {},
+              "text": "def offToOn(panelValue):\n\text.SubWidgetExt.onPanelEvent('offToOn', panelValue)\n\ndef onToOff(panelValue):\n\text.SubWidgetExt.onPanelEvent('onToOff', panelValue)\n\ndef valueChange(panelValue):\n\text.SubWidgetExt.onPanelEvent('valueChange', panelValue)\n",
+              "children": []
+            },
+            {
+              "name": "NumericFieldExt",
+              "type": "textDAT",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/numericValue0/NumericFieldExt",
+              "nodeX": -400,
+              "nodeY": 400,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {},
+              "text": "SubWidgetExt = mod.SubWidgetExt.SubWidgetExt\nTDF = op.TDModules.mod.TDFunctions\n\nclass NumericFieldExt(SubWidgetExt):\n\t\"\"\"\n\tNumericFieldExt description\n\t\"\"\"\n\tdef __init__(self, ownerComp):\n\t\t# The component to which this extension is attached\n\t\tself.parPrefix = 'Numericfield'\n\t\tSubWidgetExt.__init__(self, ownerComp)\n\n\tdef onParSettingsChange(self, par, prev):\n\t\t\"\"\"\n\t\tManages value changes widget settings parameters\n\t\t\"\"\"\n\t\tval = par.eval()\n\t\tif par.name == 'Numericfieldtype':\n\t\t\tif val == 'integer':\n\t\t\t\tparent.Widget.par.Numericfielddecimalplaces.enable = False\n\t\t\telse:\n\t\t\t\tparent.Widget.par.Numericfielddecimalplaces.enable = True\n\t\telse:\n\t\t\tSubWidgetExt.onParSettingsChange(self, par, prev)\n\n\tdef makePanelExecute(self):\n\t\tSubWidgetExt.makePanelExecute(self,\n\t\t\t\t\tself.getDockExpressionToOwner() + '.op(\"field\")')\n",
+              "children": []
+            },
+            {
+              "name": "panelExecOPExec",
+              "type": "opexecuteDAT",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/numericValue0/panelExecOPExec",
+              "nodeX": -400,
+              "nodeY": 100,
+              "color": [
+                0.05000000074505806,
+                0.5,
+                0.05000000074505806
+              ],
+              "pars": {},
+              "text": "def onOPdelete():\n\text.SubWidgetExt.PanelExecPar.val = ''\n\text.SubWidgetExt.PanelExecPar.enable = False\t",
+              "children": []
+            },
+            {
+              "name": "parexecSettings",
+              "type": "parameterexecuteDAT",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/numericValue0/parexecSettings",
+              "nodeX": -400,
+              "nodeY": 200,
+              "color": [
+                0.05000000074505806,
+                0.5,
+                0.05000000074505806
+              ],
+              "pars": {},
+              "text": "def valueChange(par, val, prev):\n\text.SubWidgetExt.onParSettingsChange(par, prev)\n\ndef onPulse(par):\n\text.SubWidgetExt.onParSettingsPulse(par)\n\n",
+              "children": []
+            },
+            {
+              "name": "text1_callbacks",
+              "type": "textDAT",
+              "path": "/project1/MyUI/ModalDialog/sliderHorz/numericValue0/text1_callbacks",
+              "nodeX": 200,
+              "nodeY": -200,
+              "color": [
+                0.550000011920929,
+                0.550000011920929,
+                0.550000011920929
+              ],
+              "pars": {},
+              "text": "# Text Component callbacks\n\ndef onValueChange(comp, value, prevValue):\n\t\"\"\"\n\tCalled whenever the text component's value parameter changes for any reason including typing\n\tin the text window or changing the parameter directly. The callback is equivalent to the\n\tonValueChange in the parameter exectute DAT.\n\t\n\tArgs:\n\t\tcomp: the text component\n\t\tvalue: the new value\n\t\tprevValue: the previous value\n\t\"\"\"\n\t#debug('\\nonValueChange comp:', comp.path, '- new value: ', value, ', prev value: ', prevValue )\n\treturn\n\t\ndef onFocus(comp):\n\t\"\"\"\n\tCalled when one of the text components viewers gets keyboard focus. \n\t\n\tArgs:\n\t\tcomp: the text component\n\t\"\"\"\n\t#debug('\\nonFocus comp:', comp.path)\n\treturn\n\ndef onFocusEnd(comp, info):\n\t\"\"\"\n\tCalled when one of the text component's viewers loses keyboard focus. In regular editing mode\n\tthis is right after the contents are saved back to the value parameter. This function is called\n\teverytime the viewer loses focus, even if the text does not change.\n\t\n\tArgs:\n\t\tcomp: the text component\n\t\tinfo: a dictionary containing information about the event including:\n\t\t\treason: a string indicating what caused the viewer to lose focus e.g. 'enter', 'escape', 'tab', 'unknown'\n\t\n\t\"\"\"\n\t#debug('\\nonFocusEnd comp:', comp.path, '- info:\\n', info)\n\treturn\n\t\ndef onTextEdit(comp):\n\t\"\"\"\n\tCalled each time the contents of the text component viewer change i.e. when typing a character,\n\tdeleting text, cutting or pasting. \n\t\n\tArgs:\n\t\tcomp: the text component\n\t\"\"\"\n\t#debug('\\nonTextEdit comp:', comp.path, '- text: ', comp.editText)\n\treturn\n\t\ndef onTextEditEnd(comp, value, prevValue):\n\t\"\"\"\n\tCalled when the user finishes editing and the value has been changed. Not called in 'Continuous Edit' mode. Use\n\tonTextEdit and onFocusEnd when using continuous editing.\n\t\n\tArgs:\n\t\tcomp: the text component\n\t\tvalue: the new value\n\t\tprevValue: the previous value\n\t\"\"\"\n\t#debug('\\nonTextEditEnd comp:', comp.path, '- new value: ', value, ', prev value: ', prevValue )\n\treturn\n\t\n\t",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CloseButton1",
+      "type": "buttonCOMP",
+      "path": "/project1/MyUI/ModalDialog/CloseButton1",
+      "nodeX": 0,
+      "nodeY": -130,
+      "color": [
+        0.550000011920929,
+        0.550000011920929,
+        0.550000011920929
+      ],
+      "pars": {
+        "label": "Close",
+        "value0": false,
+        "buttontype": "momentary",
+        "fontsize": 10.0,
+        "colorr": 0.5,
+        "colorg": 0.5,
+        "colorb": 0.5,
+        "x": 150,
+        "y": 40,
+        "w": 100,
+        "h": 40,
+        "layer": 11.0,
+        "display": true,
+        "enable": true,
+        "bgcolorr": 0.8,
+        "bgcolorg": 0.2,
+        "bgcolorb": 0.2,
+        "bgalpha": 1.0,
+        "borderaalpha": 1.0,
+        "borderbr": 0.0,
+        "borderbg": 0.0,
+        "borderbb": 0.0,
+        "borderbalpha": 1.0,
+        "leftborder": "off",
+        "rightborder": "off",
+        "bottomborder": "off",
+        "topborder": "off",
+        "opacity": 1.0,
+        "justifyh": "off",
+        "justifyv": "off"
+      },
+      "text": null,
+      "children": [
+        {
+          "name": "out1",
+          "type": "outCHOP",
+          "path": "/project1/MyUI/ModalDialog/CloseButton1/out1",
+          "nodeX": 200,
+          "nodeY": 0,
+          "color": [
+            0.550000011920929,
+            0.550000011920929,
+            0.550000011920929
+          ],
+          "pars": {
+            "label": "out1"
+          },
+          "text": null,
+          "children": []
+        },
+        {
+          "name": "text",
+          "type": "textCOMP",
+          "path": "/project1/MyUI/ModalDialog/CloseButton1/text",
+          "nodeX": 0,
+          "nodeY": 0,
+          "color": [
+            0.550000011920929,
+            0.550000011920929,
+            0.550000011920929
+          ],
+          "pars": {
+            "text": "Close",
+            "fontsize": 10.0,
+            "fontcolorr": 0.6,
+            "fontcolorg": 0.6,
+            "fontcolorb": 0.6,
+            "fontalpha": 1.0,
+            "alignx": "center",
+            "aligny": "center",
+            "x": 0,
+            "y": 0,
+            "w": 400,
+            "h": 300,
+            "layer": 0.0,
+            "display": true,
+            "enable": true,
+            "bgcolorr": 0.2,
+            "bgcolorg": 0.2,
+            "bgcolorb": 0.2,
+            "bgalpha": 1.0,
+            "borderaalpha": 1.0,
+            "borderbr": 0.0,
+            "borderbg": 0.0,
+            "borderbb": 0.0,
+            "borderbalpha": 1.0,
+            "leftborder": "bordera",
+            "rightborder": "bordera",
+            "bottomborder": "bordera",
+            "topborder": "bordera",
+            "opacity": 1.0,
+            "justifyh": "off",
+            "justifyv": "off"
+          },
+          "text": null,
+          "children": []
+        },
+        {
+          "name": "panelexec1",
+          "type": "panelexecuteDAT",
+          "path": "/project1/MyUI/ModalDialog/CloseButton1/panelexec1",
+          "nodeX": 200,
+          "nodeY": 0,
+          "color": [
+            0.6700000166893005,
+            0.6700000166893005,
+            0.6700000166893005
+          ],
+          "pars": {},
+          "text": "# panelValue - the PanelValue object that changed\n\ndef onValueChange(panelValue):\n    print('[TD Bridge DEBUG] Close button state changed:', panelValue)\n    if panelValue:\n        modal = op('/project1/MyUI/ModalDialog')\n        modal.par.display = False\n        print('[TD Bridge DEBUG] Modal closed!')\n    return\n",
+          "children": []
+        }
+      ]
+    }
+  ]
+}

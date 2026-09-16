@@ -115,3 +115,51 @@ python3 .vscode/td_snapshot.py --save --root /project1/MyUI --name "before-<chan
 
 ### Why
 TD has no undo for programmatic changes. The snapshot system preserves the user's manual work so it can be restored if something goes wrong. Skipping this step means potentially destroying hours of manual layout work.
+
+## Palette Widgets: Always Direct widgetCOMP, Never Container-Wrapped
+
+When adding a palette widget (header, label, footer, slider, button, etc.) to a container, always create it as a **direct widgetCOMP child** — never as a containerCOMP wrapper. A widget inside a container wrapper will not work correctly with the parent's panel layout, anchoring, or layer system.
+
+Palette widget `.tox` files live at:
+`/Applications/TouchDesigner.app/Contents/Resources/tfs/Samples/Palette/UI/Basic Widgets/`
+
+Available widgets: `header`, `footer`, `label`, `sliderHorz`, `sliderVert`, `buttonMomentary`, `buttonToggle`, `fieldString`, `knobFixed`, `section`, `windowHeader`, etc.
+
+### Correct method — "temp container + copyOPs"
+
+```python
+modal = op('/project1/MyUI/ModalDialog')
+tox_path = '/Applications/TouchDesigner.app/.../Basic Widgets/header.tox'
+
+# 1. Create a TEMP container and load the palette .tox into it
+temp = modal.create(containerCOMP, 'TempHeader')
+temp.par.enableexternaltox = True
+temp.par.externaltox = tox_path
+temp.par.enableexternaltoxpulse.pulse()
+
+# 2. Find the inner widgetCOMP child (it has Widgettox set)
+temp2 = op(f'{modal.path}/TempHeader')
+inner = None
+for c in temp2.children:
+    if type(c).__name__ == 'widgetCOMP':
+        inner = c
+        break
+
+# 3. copyOPs the inner widgetCOMP into the target parent (creates a DIRECT child)
+new_ops = modal.copyOPs([inner])
+header = new_ops[0]
+header.name = 'Header'
+
+# 4. Destroy the temp container
+temp2.destroy()
+```
+
+### What NOT to do
+
+- **Never load a palette `.tox` via `externaltox` on the target widgetCOMP** — this replaces it with a containerCOMP wrapper
+- **Never use `loadTox()` with a palette `.tox`** — same problem: creates a container wrapper with the widget as a child
+- **Never use `reload()` with a palette `.tox`** — also converts the node to a containerCOMP
+- **Never change `Widgettox` and pulse `reloadbuiltin`** — this does NOT transform the widget content
+
+### Why
+Palette `.tox` files are designed for drag-and-drop from the TD palette UI, which creates a containerCOMP + inner widgetCOMP. When loaded programmatically via `externaltox`, `loadTox`, or `reload`, they always produce this wrapper structure. The `copyOPs` method copies the inner widgetCOMP as a direct child, preserving the `Widgettox` parameter and all widget internals — matching the structure of widgets created via the palette UI.

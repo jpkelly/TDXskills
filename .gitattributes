@@ -1,0 +1,6 @@
+# TouchDesigner rewrites synced DAT files with CRLF. Normalize to LF in the repo
+# so a TD save does not show up as a whole-file diff.
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.ts text eol=lf

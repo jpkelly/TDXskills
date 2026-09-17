@@ -2,7 +2,7 @@
   "name": "tdx-skills",
   "displayName": "TDXskills — TouchDesigner Bridge",
   "description": "Run Python in a live TouchDesigner instance from VS Code. Send selections, lines, or whole files and read the results without touching the Textport.",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "publisher": "jp",
   "license": "MIT",
   "icon": "resources/icon.png",
@@ -69,6 +69,26 @@
         "command": "tdBridge.generateBridge",
         "title": "TouchDesigner: Show Bridge Callback Code",
         "category": "TD Bridge"
+      },
+      {
+        "command": "tdBridge.snapshotSave",
+        "title": "TouchDesigner: Save Snapshot",
+        "category": "TD Snapshot"
+      },
+      {
+        "command": "tdBridge.snapshotRestore",
+        "title": "TouchDesigner: Restore Snapshot",
+        "category": "TD Snapshot"
+      },
+      {
+        "command": "tdBridge.snapshotDiff",
+        "title": "TouchDesigner: Diff Against Snapshot",
+        "category": "TD Snapshot"
+      },
+      {
+        "command": "tdBridge.snapshotList",
+        "title": "TouchDesigner: List Snapshots",
+        "category": "TD Snapshot"
       }
     ],
     "menus": {

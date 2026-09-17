@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import { Buffer } from 'buffer';
 import { TDBridgeClient } from './bridgeClient';
+import { TDNodeSnapshot, countNodes, diffSnapshots, restoreNode, serializeNode } from './snapshot';
 
 let bridgeClient: TDBridgeClient | undefined;
 let outputChannel: vscode.OutputChannel;
@@ -156,10 +157,233 @@ export function activate(context: vscode.ExtensionContext) {
         })
     );
 
+    registerSnapshotCommands(context);
+
     // Auto-connect if configured
     if (vscode.workspace.getConfiguration('tdBridge').get<boolean>('autoConnect', false)) {
         vscode.commands.executeCommand('tdBridge.connect');
     }
+}
+
+// ─── Snapshots ───────────────────────────────────────────────────────────
+
+function snapshotDir(): vscode.Uri | undefined {
+    const configured = vscode.workspace.getConfiguration('tdBridge').get<string>('snapshotDir', '').trim();
+    if (configured) {
+        return vscode.Uri.file(configured);
+    }
+    const folder = vscode.workspace.workspaceFolders?.[0];
+    return folder ? vscode.Uri.joinPath(folder.uri, 'snapshots') : undefined;
+}
+
+async function listSnapshotFiles(): Promise<vscode.Uri[]> {
+    const dir = snapshotDir();
+    if (!dir) {
+        return [];
+    }
+    try {
+        const entries = await vscode.workspace.fs.readDirectory(dir);
+        return entries
+            .filter(([name, type]) => type === vscode.FileType.File && name.endsWith('.json'))
+            .map(([name]) => vscode.Uri.joinPath(dir, name))
+            .sort((a, b) => a.path.localeCompare(b.path));
+    } catch {
+        return [];
+    }
+}
+
+async function pickSnapshot(placeHolder: string): Promise<{ uri: vscode.Uri; data: TDNodeSnapshot } | undefined> {
+    const files = await listSnapshotFiles();
+    if (files.length === 0) {
+        vscode.window.showWarningMessage(`No snapshots found in ${snapshotDir()?.fsPath ?? 'the snapshot folder'}.`);
+        return undefined;
+    }
+
+    const picked = await vscode.window.showQuickPick(
+        files.map((uri) => ({ label: uri.path.split('/').pop()!.replace(/\.json$/, ''), uri })),
+        { placeHolder }
+    );
+    if (!picked) {
+        return undefined;
+    }
+
+    const bytes = await vscode.workspace.fs.readFile(picked.uri);
+    return { uri: picked.uri, data: JSON.parse(Buffer.from(bytes).toString('utf8')) as TDNodeSnapshot };
+}
+
+async function requireClient(): Promise<TDBridgeClient | undefined> {
+    if (bridgeClient) {
+        return bridgeClient;
+    }
+    const client = createClient();
+    updateStatusBar('connecting');
+    try {
+        await client.testConnection();
+        bridgeClient = client;
+        updateStatusBar('connected');
+        return client;
+    } catch (err) {
+        updateStatusBar('disconnected');
+        await reportConnectionFailure(err, client.endpoint);
+        return undefined;
+    }
+}
+
+function registerSnapshotCommands(context: vscode.ExtensionContext): void {
+    context.subscriptions.push(
+        vscode.commands.registerCommand('tdBridge.snapshotSave', async () => {
+            const dir = snapshotDir();
+            if (!dir) {
+                vscode.window.showErrorMessage('Open a folder, or set tdBridge.snapshotDir, before saving snapshots.');
+                return;
+            }
+
+            const root = await vscode.window.showInputBox({
+                prompt: 'Node path to capture',
+                value: context.workspaceState.get<string>('tdBridge.lastRoot', '/project1'),
+                validateInput: (v) => (v.startsWith('/') ? undefined : 'Path must be absolute, e.g. /project1'),
+            });
+            if (!root) {
+                return;
+            }
+
+            const stamp = new Date().toISOString().slice(0, 19).replace(/[-:]/g, '').replace('T', '_');
+            const name = await vscode.window.showInputBox({ prompt: 'Snapshot name', value: stamp });
+            if (!name) {
+                return;
+            }
+
+            const client = await requireClient();
+            if (!client) {
+                return;
+            }
+
+            try {
+                const data = await serializeNode(client, root);
+                const target = vscode.Uri.joinPath(dir, `${name}.json`);
+                await vscode.workspace.fs.writeFile(target, Buffer.from(JSON.stringify(data, null, 2), 'utf8'));
+                await context.workspaceState.update('tdBridge.lastRoot', root);
+
+                outputChannel.appendLine(`[Snapshot] saved ${target.fsPath}`);
+                outputChannel.appendLine(`  Root: ${root}   Nodes: ${countNodes(data)}`);
+                outputChannel.appendLine('');
+                vscode.window.showInformationMessage(`Snapshot "${name}" saved — ${countNodes(data)} nodes from ${root}.`);
+            } catch (err) {
+                const msg = err instanceof Error ? err.message : String(err);
+                outputChannel.appendLine(`[Snapshot ERROR] ${msg}`);
+                outputChannel.show(true);
+                vscode.window.showErrorMessage(`Snapshot failed: ${msg}`);
+            }
+        })
+    );
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('tdBridge.snapshotRestore', async () => {
+            const picked = await pickSnapshot('Snapshot to restore');
+            if (!picked) {
+                return;
+            }
+
+            const target = await vscode.window.showInputBox({
+                prompt: 'Restore into which node path?',
+                value: picked.data.path,
+                validateInput: (v) => (v.startsWith('/') ? undefined : 'Path must be absolute, e.g. /project1'),
+            });
+            if (!target) {
+                return;
+            }
+
+            const confirm = await vscode.window.showWarningMessage(
+                `Restore ${countNodes(picked.data)} nodes into ${target}? This overwrites current positions, colours, parameters and DAT text.`,
+                { modal: true },
+                'Restore'
+            );
+            if (confirm !== 'Restore') {
+                return;
+            }
+
+            const client = await requireClient();
+            if (!client) {
+                return;
+            }
+
+            try {
+                const result = await restoreNode(client, picked.data, target);
+                outputChannel.appendLine(`[Snapshot] restored ${result.restored} node(s) into ${target}`);
+                for (const missing of result.missing) {
+                    outputChannel.appendLine(`  missing: ${missing}`);
+                }
+                outputChannel.appendLine('');
+                if (result.missing.length > 0) {
+                    outputChannel.show(true);
+                    vscode.window.showWarningMessage(
+                        `Restored ${result.restored} node(s); ${result.missing.length} not found. See the output channel.`
+                    );
+                } else {
+                    vscode.window.showInformationMessage(`Restored ${result.restored} node(s) into ${target}.`);
+                }
+            } catch (err) {
+                const msg = err instanceof Error ? err.message : String(err);
+                outputChannel.appendLine(`[Snapshot ERROR] ${msg}`);
+                outputChannel.show(true);
+                vscode.window.showErrorMessage(`Restore failed: ${msg}`);
+            }
+        })
+    );
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('tdBridge.snapshotDiff', async () => {
+            const picked = await pickSnapshot('Snapshot to compare against');
+            if (!picked) {
+                return;
+            }
+
+            const client = await requireClient();
+            if (!client) {
+                return;
+            }
+
+            try {
+                const current = await serializeNode(client, picked.data.path);
+                const diffs = diffSnapshots(picked.data, current);
+
+                outputChannel.appendLine(`[Snapshot] diff against ${picked.uri.fsPath}`);
+                if (diffs.length === 0) {
+                    outputChannel.appendLine('  no differences');
+                } else {
+                    for (const d of diffs) {
+                        outputChannel.appendLine(`  ${d}`);
+                    }
+                }
+                outputChannel.appendLine('');
+                outputChannel.show(true);
+            } catch (err) {
+                const msg = err instanceof Error ? err.message : String(err);
+                outputChannel.appendLine(`[Snapshot ERROR] ${msg}`);
+                outputChannel.show(true);
+                vscode.window.showErrorMessage(`Diff failed: ${msg}`);
+            }
+        })
+    );
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('tdBridge.snapshotList', async () => {
+            const dir = snapshotDir();
+            const files = await listSnapshotFiles();
+
+            outputChannel.appendLine(`[Snapshot] ${dir?.fsPath ?? '(no folder)'}`);
+            if (files.length === 0) {
+                outputChannel.appendLine('  no snapshots yet');
+            } else {
+                for (const uri of files) {
+                    const stat = await vscode.workspace.fs.stat(uri);
+                    outputChannel.appendLine(`  ${uri.path.split('/').pop()}  (${stat.size} bytes)`);
+                }
+            }
+            outputChannel.appendLine('');
+            outputChannel.show(true);
+        })
+    );
 }
 
 async function reportConnectionFailure(err: unknown, endpoint: string): Promise<void> {

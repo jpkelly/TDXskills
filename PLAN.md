@@ -2,7 +2,7 @@
 
 > **Created:** 2026-09-16
 > **Goal:** Transform TDXskills from a workspace-folder-based toolkit into a published VS Code extension that any TouchDesigner + VS Code user can install and use with minimal configuration.
-> **Status:** Phase 1 complete and verified against live TD — ready to begin Phase 2
+> **Status:** Phase 2 complete and verified against live TD — ready to begin Phase 3
 
 ---
 
@@ -192,18 +192,43 @@ Then reload the window. Bump `version` in `package.json` or the filename will no
 - The serialization logic (which pars to save, skip list) ports directly. The TD communication uses the same HTTP bridge.
 
 **Tasks:**
-- [ ] Create `src/snapshot.ts` — port serialize_node, restore_node, diff_snapshots from td_snapshot.py
-- [ ] Register commands: `tdBridge.snapshotSave`, `tdBridge.snapshotSaveScoped`, `tdBridge.snapshotRestore`, `tdBridge.snapshotDiff`, `tdBridge.snapshotList`
-- [ ] Snapshot dir: use `tdBridge.snapshotDir` setting, default `${workspaceFolder}/snapshots`
-- [ ] Use QuickPick or InputBox for snapshot name and root path prompts (replacing tasks.json `${input:}`)
-- [ ] Add keybinding or command palette entries for snapshot commands
-- [ ] Test: save a snapshot of /project1, verify JSON file created
-- [ ] Test: restore from snapshot, verify nodes restored
-- [ ] Test: diff against saved snapshot, verify output
-- [ ] Test: list snapshots
+- [x] Create `src/snapshot.ts` — port serialize_node, restore_node, diff_snapshots from td_snapshot.py
+- [x] Register commands: `tdBridge.snapshotSave`, `tdBridge.snapshotRestore`, `tdBridge.snapshotDiff`, `tdBridge.snapshotList`
+- [x] Snapshot dir: use `tdBridge.snapshotDir` setting, default `${workspaceFolder}/snapshots`
+- [x] Use QuickPick or InputBox for snapshot name and root path prompts (replacing tasks.json `${input:}`)
+- [x] Palette entries under a "TD Snapshot" category
+- [x] Test: save a snapshot of /project1, verify JSON file created
+- [x] Test: restore from snapshot, verify nodes restored (3 restored, 0 missing)
+- [x] Test: diff against saved snapshot, verify output
+- [x] Test: list snapshots
+- [x] Test: error path for a nonexistent root node
 
 **Deliverable:** Snapshot functionality fully in the extension, no external Python scripts needed.
 **Test:** Save/restore/diff cycle on a real TD project.
+
+**Restore path semantics were wrong in the legacy script and are fixed here.** `td_snapshot.py` treated `--root` as the
+node to capture when saving, but as the *parent* when restoring: `_restore` built `root + '/' + snapshot_name`. So
+`--save --root /project1` followed by `--restore --root /project1` looked for `/project1/project1` and silently printed
+"Node not found". It only worked if you remembered to pass the parent on restore. The port drops the parent-joining
+entirely — restore targets an absolute path that defaults to the snapshot's own recorded `path`, and children are
+resolved beneath it by name. Verified: restoring `/project1` reports `{restored: 3, missing: []}`.
+
+The same off-by-one produced the doubled labels in diff output (`/project1/project1/webserver1_callbacks`). The ported
+diff builds labels from the node names alone.
+
+**Other deviations from the original plan:**
+
+- No separate `snapshotSaveScoped` command. `snapshotSave` prompts for the root path anyway (remembering the last one
+  in workspace state), so a second command would only add palette noise.
+- Restore prompts for confirmation with a modal, since it overwrites positions, colours, parameters and DAT text.
+- Restore reports `{restored, missing}` as JSON rather than printing warnings, so the extension can surface a proper
+  warning listing the missing paths.
+
+**Python literal embedding.** Snapshot JSON is injected into the generated Python as `JSON.stringify(json)` — JSON
+string syntax is a subset of Python's, so the result is a valid `str` literal. This is what avoids the historic
+double-encoding bug without needing `json.dumps(json.dumps(...))`.
+
+**Snapshot format is unchanged**, so snapshots in `snapshots/examples/` still load.
 
 ---
 
@@ -359,3 +384,4 @@ Then reload the window. Bump `version` in `package.json` or the filename will no
 | 2026-09-16 | 0 | Repo reorganized: `resources/`, `legacy/`, `snapshots/examples/` created; `.vscode/` tooling untracked but left working; ignore files updated; `npm run compile` passes. |
 | 2026-09-16 | 1 | Extension core fixed: dead socket bridge removed, probe-based `testConnection()`, lazy connect, config plumbing, v0.2.0. Added `auto` exec mode. Verified end-to-end in the dev host against live TD 2025.33230. |
 | 2026-09-16 | 1.5 | Packaged and installed locally as `jp.tdx-skills@0.2.1`. Added icon, listing metadata, 4-step walkthrough, editor title button. Dev host abandoned in favour of the vsix install loop. |
+| 2026-09-16 | 2 | `src/snapshot.ts` ports save/restore/diff/list to TypeScript; 4 commands with QuickPick/InputBox prompts. Fixed the legacy restore path off-by-one. Installed as v0.3.0, verified live. |

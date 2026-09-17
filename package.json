@@ -1,17 +1,35 @@
 {
   "name": "tdx-skills",
-  "displayName": "TDXskills",
-  "description": "TouchDesigner + VS Code integration — send Python to TD, Copilot Chat tools, node snapshots, TDI autocomplete.",
-  "version": "0.1.0",
+  "displayName": "TDXskills — TouchDesigner Bridge",
+  "description": "Run Python in a live TouchDesigner instance from VS Code. Send selections, lines, or whole files and read the results without touching the Textport.",
+  "version": "0.2.1",
   "publisher": "jp",
+  "license": "MIT",
+  "icon": "resources/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jpkelly/TDXskills.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jpkelly/TDXskills/issues"
+  },
+  "keywords": [
+    "touchdesigner",
+    "derivative",
+    "td",
+    "creative coding",
+    "live coding"
+  ],
+  "galleryBanner": {
+    "color": "#10131A",
+    "theme": "dark"
+  },
   "engines": {
     "vscode": "^1.85.0"
   },
-  "categories": ["Other", "Extension Packs"],
+  "categories": ["Other", "Programming Languages"],
   "activationEvents": [
-    "onCommand:tdBridge.connect",
-    "onCommand:tdBridge.sendSelection",
-    "onCommand:tdBridge.sendFile"
+    "onLanguage:python"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -34,7 +52,8 @@
       {
         "command": "tdBridge.sendFile",
         "title": "TouchDesigner: Send File to Textport",
-        "category": "TD Bridge"
+        "category": "TD Bridge",
+        "icon": "$(run-all)"
       },
       {
         "command": "tdBridge.sendLine",
@@ -45,6 +64,56 @@
         "command": "tdBridge.evalExpression",
         "title": "TouchDesigner: Evaluate Expression (read result)",
         "category": "TD Bridge"
+      },
+      {
+        "command": "tdBridge.generateBridge",
+        "title": "TouchDesigner: Show Bridge Callback Code",
+        "category": "TD Bridge"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "tdBridge.sendFile",
+          "when": "resourceLangId == python",
+          "group": "navigation@1"
+        }
+      ]
+    },
+    "walkthroughs": [
+      {
+        "id": "tdxGettingStarted",
+        "title": "Connect VS Code to TouchDesigner",
+        "description": "Set up the bridge, then run Python in a live TD instance without leaving the editor.",
+        "steps": [
+          {
+            "id": "bridgeCode",
+            "title": "Get the bridge callback code",
+            "description": "TouchDesigner needs a Web Server DAT callback to receive code. Open the script and save it next to your project.\n[Show Bridge Callback Code](command:tdBridge.generateBridge)",
+            "media": { "markdown": "resources/walkthrough/bridge-code.md" },
+            "completionEvents": ["onCommand:tdBridge.generateBridge"]
+          },
+          {
+            "id": "webServerDat",
+            "title": "Create the Web Server DAT",
+            "description": "In TouchDesigner, add a Web Server DAT on port 9980 and point its docked callbacks DAT at the saved file with Sync to File on.",
+            "media": { "markdown": "resources/walkthrough/web-server-dat.md" }
+          },
+          {
+            "id": "connect",
+            "title": "Test the connection",
+            "description": "Check that VS Code can reach TouchDesigner.\n[Connect to TouchDesigner](command:tdBridge.connect)",
+            "media": { "markdown": "resources/walkthrough/connect.md" },
+            "completionEvents": ["onCommand:tdBridge.connect"]
+          },
+          {
+            "id": "sendCode",
+            "title": "Send your first code",
+            "description": "Select Python in any file and press ⌘/Ctrl+Enter. Expressions return their value; statements print their output.",
+            "media": { "markdown": "resources/walkthrough/send-code.md" },
+            "completionEvents": ["onCommand:tdBridge.sendSelection"]
+          }
+        ]
       }
     ],
     "keybindings": [
@@ -94,6 +163,16 @@
           "type": "boolean",
           "default": true,
           "description": "Show connection status in the status bar"
+        },
+        "tdBridge.snapshotDir": {
+          "type": "string",
+          "default": "",
+          "description": "Folder for TD node snapshots. Empty means ${workspaceFolder}/snapshots."
+        },
+        "tdBridge.tdPythonPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to TouchDesigner's bundled Python, used for TDI autocomplete. Empty means auto-detect."
         }
       }
     }

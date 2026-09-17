@@ -1,5 +1,7 @@
 import * as http from 'http';
 
+export type TDExecMode = 'auto' | 'eval' | 'exec';
+
 export interface TDResponse {
     stdout: string;
     result: string;
@@ -10,7 +12,15 @@ export interface TDConnectionInfo {
     connected: boolean;
     version?: string;
     python?: string;
+    product?: string;
 }
+
+// Returns "python|build|product". TD's `app` is reached via the td module because
+// DAT globals() does not contain it, even though bare names like absTime resolve.
+const PROBE_EXPR =
+    "__import__('sys').version.split()[0]" +
+    " + '|' + str(getattr(__import__('td').app, 'build', ''))" +
+    " + '|' + str(getattr(__import__('td').app, 'product', ''))";
 
 /**
  * HTTP client that talks to the TouchDesigner Bridge server
@@ -32,51 +42,35 @@ export class TDBridgeClient {
     }
 
     /**
-     * Test connection by sending a harmless eval that returns TD version info.
+     * Test connection by evaluating a harmless expression that also reports
+     * the Python and TouchDesigner versions.
      */
     async testConnection(): Promise<TDConnectionInfo> {
-        try {
-            const resp = await this.execute(
-                "import td; __td_ver = td.version() if hasattr(td, 'version') else 'unknown'; __py_ver = __import__('sys').version.split()[0]",
-                true
-            );
-            // Try a second eval to get the actual values
-            const versionResp = await this.execute(
-                "getattr(__import__('td'), 'version', lambda: 'unknown')()",
-                true
-            );
-            const pythonResp = await this.execute(
-                "__import__('sys').version.split()[0]",
-                true
-            );
+        const resp = await this.execute(PROBE_EXPR, 'eval');
 
-            const version = versionResp.result
-                ? versionResp.result.replace(/['"]/g, '')
-                : undefined;
-            const python = pythonResp.result
-                ? pythonResp.result.replace(/['"]/g, '')
-                : undefined;
-
-            return {
-                connected: true,
-                version: version || 'unknown',
-                python: python || 'unknown',
-            };
-        } catch {
-            throw new Error(`Cannot reach TouchDesigner at ${this.host}:${this.port}`);
+        // A reachable bridge is "connected" even if the probe expression failed.
+        if (resp.error) {
+            return { connected: true };
         }
+
+        const [python, version, product] = resp.result
+            .replace(/^['"]|['"]$/g, '')
+            .split('|');
+
+        return {
+            connected: true,
+            python: python || undefined,
+            version: version || undefined,
+            product: product || undefined,
+        };
     }
 
     /**
      * Execute Python code in TD's global scope.
-     * @param code Python source code
-     * @param evalMode If true, use eval() (returns a value). If false, use exec().
+     * @param mode 'auto' lets TD compile-test the code and return a value when it is an expression.
      */
-    async execute(code: string, evalMode: boolean = false): Promise<TDResponse> {
-        const payload = JSON.stringify({
-            code: code,
-            mode: evalMode ? 'eval' : 'exec',
-        });
+    async execute(code: string, mode: TDExecMode = 'auto'): Promise<TDResponse> {
+        const payload = JSON.stringify({ code, mode });
 
         return new Promise<TDResponse>((resolve, reject) => {
             const req = http.request(
@@ -112,7 +106,7 @@ export class TDBridgeClient {
 
             req.on('error', (err: NodeJS.ErrnoException) => {
                 if (err.code === 'ECONNREFUSED') {
-                    reject(new Error(`Connection refused — is the TD bridge running on ${this.host}:${this.port}?`));
+                    reject(new Error(`Connection refused — is the Web Server DAT active on ${this.host}:${this.port}?`));
                 } else if (err.code === 'ETIMEDOUT') {
                     reject(new Error(`Request timed out after ${this.timeout}ms`));
                 } else {

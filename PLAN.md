@@ -2,7 +2,7 @@
 
 > **Created:** 2026-09-16
 > **Goal:** Transform TDXskills from a workspace-folder-based toolkit into a published VS Code extension that any TouchDesigner + VS Code user can install and use with minimal configuration.
-> **Status:** Phase 0 complete — ready to begin Phase 1
+> **Status:** Phase 1 complete and verified against live TD — ready to begin Phase 2
 
 ---
 
@@ -81,19 +81,105 @@ socket-thread bridge, kept only as a record of the approach that caused the TD t
 **Goal:** Working extension that replaces td_send.py + tasks.json. Send Python to TD, see output, connection status.
 
 **Tasks:**
-- [ ] Replace `getBridgePythonCode()` in `extension.ts` with the working Web Server DAT callback from `touchdesigner/td_bridge_webserver.py` (not the dead socket-thread version)
-- [ ] Fix `testConnection()` in `bridgeClient.ts` — replace `td.version()` call with `absTime.frame` or `op('/local') is not None`
-- [ ] Wire up output channel: send commands print stdout, result, errors to "TouchDesigner Bridge" output channel
-- [ ] Implement auto-connect on first send if not connected (lazy connection)
-- [ ] Add `tdBridge.snapshotDir` and `tdBridge.tdPythonPath` to configuration schema (empty defaults, filled by later phases)
-- [ ] Verify keybindings work (⌘+enter, shift+enter, ⌘+shift+enter — already in package.json)
-- [ ] Test: F5 launch extension dev host, open a .py file, send selection to TD, verify output
-- [ ] Test: status bar shows connected/disconnected correctly
-- [ ] Test: error handling when TD is not running (graceful message, offer to generate bridge)
+- [x] Replace `getBridgePythonCode()` in `extension.ts` — now reads the bundled `resources/td_bridge_webserver.py` at runtime instead of embedding the dead socket-thread server as a string
+- [x] Fix `testConnection()` in `bridgeClient.ts` — replaced the nonexistent `td.version()` with a single defensive probe expression
+- [x] Wire up output channel: send commands print stdout, result, errors to "TouchDesigner Bridge" output channel
+- [x] Implement auto-connect on first send if not connected (lazy connection)
+- [x] Add `tdBridge.snapshotDir` and `tdBridge.tdPythonPath` to configuration schema (empty defaults, filled by later phases)
+- [x] Contribute `tdBridge.generateBridge` as a palette command (was registered but not exposed)
+- [x] Change activation to `onLanguage:python` so the status bar appears without running a command first
+- [x] Pass the `tdBridge.timeout` setting through to the client; reset the client when host/port/timeout change
+- [x] Verify keybindings work (⌘+enter, shift+enter, ⌘+shift+enter — already in package.json)
+- [x] Test: bridge client verified against a mock Web Server DAT (probe parsing, exec, eval, connection refused)
+- [x] Test: compiled client verified against a **live TD 2025.33230** — probe, exec + stdout, eval, Python error, offline path
+- [x] Test: extension dev host — status bar states, keybindings, output channel formatting, end-to-end send returning `=> 1848.5166666666667`
+- [x] Add `auto` execution mode so expressions return values without the caller choosing eval vs exec
 
 **Deliverable:** `.vsix` that provides send-to-TD functionality with keybindings + status bar.
 **Test:** Install in a clean VS Code, connect to running TD, send code, see output.
 **Handoff note:** F5 dev host in Insiders needs `runtimeExecutable: /Applications/Visual Studio Code - Insiders.app/Contents/MacOS/Code - Insiders` in launch.json.
+
+**Probe expression** (in `bridgeClient.ts`) — returns `python|build|product`:
+
+```python
+__import__('sys').version.split()[0]
+  + '|' + str(getattr(__import__('td').app, 'build', ''))
+  + '|' + str(getattr(__import__('td').app, 'product', ''))
+```
+
+Verified live: `3.11.15|2025.33230|TouchDesigner`.
+
+**Gotcha found during live testing:** a first attempt used `globals().get('app')` and silently returned empty fields.
+TD's DAT module `globals()` contains only `op`, `ops`, `opex`, `me`, `mod`, `parent`, `ext`, `iop`, `ipar` plus whatever
+the file imports — **not** `app` or `absTime`. Bare `absTime` still evaluates, so TD resolves those names outside the
+globals dict. Never probe TD globals with `globals().get(...)`; import the `td` module instead.
+
+Note `app.version` is the series string (`'099'`), not the build. Use `app.build` for the version users recognise.
+
+**Known non-issue:** the editor may report `Cannot find name 'Buffer'` in `extension.ts`. `npx tsc -p ./` passes —
+it is a stale TS server cache. "TypeScript: Restart TS Server" clears it.
+
+**`auto` execution mode.** The first live test sent `absTime.frame` and printed nothing, because send commands used
+`exec`, which discards the value. `td_send.py` had papered over this with a string heuristic (no newline, no `=`, does
+not start with `import`/`def`/...), which misclassifies things like `a == b`. Instead the bridge now accepts
+`mode: "auto"` and lets Python decide:
+
+```python
+try:
+    expr = compile(code, '<vscode>', 'eval')
+except SyntaxError:
+    expr = None
+result = eval(expr, globals()) if expr is not None else exec(code, globals())
+```
+
+One round trip, no heuristics. `eval` and `exec` still work explicitly. All send commands use `auto`; only
+`tdBridge.evalExpression` forces `eval`.
+
+**Dev host notes for whoever picks this up:**
+
+- F5 fails on this machine with "Extension host did not start in 10 seconds". Launching from the CLI works:
+  `"/Applications/Visual Studio Code - Insiders.app/Contents/Resources/app/bin/code" --new-window --extensionDevelopmentPath=<repo> <some-other-folder>`
+- Pass a folder **other than the repo** — VS Code refuses to open a folder already open in another window and you get an
+  empty dev host instead.
+- `runtimeExecutable` was removed from `launch.json`; `extensionHost` launches use the running app and never needed it.
+- After recompiling, the dev host must be reloaded ("Developer: Reload Window") or it keeps running the old build.
+
+---
+
+### Phase 1.5: UI polish (v0.2.1)
+
+The dev host round trip proved too confusing to work in day to day, so the extension is now installed locally from a
+`.vsix` instead. That made the unfinished presentation obvious, so this pass covered it.
+
+- [x] Extension icon — `resources/icon.svg` is the editable source, `resources/icon.png` the 128px build
+- [x] Listing metadata — display name, description, license, repository, bugs, keywords, gallery banner, categories
+- [x] Getting-started walkthrough with 4 steps and markdown media in `resources/walkthrough/`
+- [x] Send-file button in the editor title bar for Python files
+- [ ] Sidebar view container — deferred to Phase 2, when snapshots give it something to show
+- [ ] Editor context menu entries — deferred
+
+**Icon build** (no SVG converter installed; macOS Quick Look does the job):
+
+```bash
+cd resources && mkdir -p .iconwork
+qlmanage -t -s 512 -o .iconwork icon.svg
+sips -z 128 128 .iconwork/icon.svg.png --out icon.png
+rm -rf .iconwork
+```
+
+The SVG declares `width/height` of 512 with a `viewBox` of 128 on purpose. Quick Look renders at the intrinsic size and
+pads to the requested canvas rather than scaling, so a 128px SVG lands in the top-left corner of a 512px PNG.
+
+**Local install loop** — the extension is installed from a `.vsix`, not run in a dev host:
+
+```bash
+npm run compile
+npx @vscode/vsce package
+"/Applications/Visual Studio Code - Insiders.app/Contents/Resources/app/bin/code" \
+  --install-extension tdx-skills-<version>.vsix --force
+```
+
+Then reload the window. Bump `version` in `package.json` or the filename will not change.
 
 ---
 
@@ -271,3 +357,5 @@ socket-thread bridge, kept only as a record of the approach that caused the TD t
 |---|---|---|
 | 2026-09-16 | — | Plan drafted and approved. Decisions made via interactive Q&A. |
 | 2026-09-16 | 0 | Repo reorganized: `resources/`, `legacy/`, `snapshots/examples/` created; `.vscode/` tooling untracked but left working; ignore files updated; `npm run compile` passes. |
+| 2026-09-16 | 1 | Extension core fixed: dead socket bridge removed, probe-based `testConnection()`, lazy connect, config plumbing, v0.2.0. Added `auto` exec mode. Verified end-to-end in the dev host against live TD 2025.33230. |
+| 2026-09-16 | 1.5 | Packaged and installed locally as `jp.tdx-skills@0.2.1`. Added icon, listing metadata, 4-step walkthrough, editor title button. Dev host abandoned in favour of the vsix install loop. |

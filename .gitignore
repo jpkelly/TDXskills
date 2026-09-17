@@ -14,3 +14,8 @@ out/
 
 # Snapshots captured during development (snapshots/examples/ stays tracked)
 snapshots/*.json
+
+# Scratch pad for poking at TD
+test.py
+
+.DS_Store

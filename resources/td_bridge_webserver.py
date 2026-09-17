@@ -3,9 +3,11 @@
 # ═══════════════════════════════════════════════════════════════════
 # SETUP (takes 30 seconds):
 #   1. In TD, press Tab → type "Web Server" → create a Web Server DAT
-#   2. Set its "Port" parameter to 9981 (or any free port)
-#   3. Set the "Callbacks DAT" parameter to link to this file
-#   4. The server starts automatically
+#   2. Set its "Port" parameter to 9980 (must match the tdBridge.port setting)
+#   3. Click "+" next to the "Callbacks DAT" parameter to create the docked
+#      callbacks DAT, then point that DAT's "File" parameter at this file and
+#      turn "Sync to File" on
+#   4. Turn "Active" on — the server starts immediately
 #
 # From VS Code: select Python code, run the "TD Bridge: Send Selection" task
 # ═══════════════════════════════════════════════════════════════════
@@ -32,7 +34,7 @@ def onHTTPRequest(webServerDAT, request, response):
 
         payload = json.loads(body_str)
         code = payload.get('code', '')
-        mode = payload.get('mode', 'exec')
+        mode = payload.get('mode', 'auto')
 
         # Capture stdout — use _sys (private ref) so user code can't break this
         old_stdout = _sys.stdout
@@ -45,8 +47,18 @@ def onHTTPRequest(webServerDAT, request, response):
         try:
             if mode == 'eval':
                 result = eval(code, globals())
-            else:
+            elif mode == 'exec':
                 exec(code, globals())
+            else:
+                # 'auto': let the compiler decide instead of guessing from the text
+                try:
+                    expr = compile(code, '<vscode>', 'eval')
+                except SyntaxError:
+                    expr = None
+                if expr is not None:
+                    result = eval(expr, globals())
+                else:
+                    exec(code, globals())
         except Exception:
             error = traceback.format_exc().strip()
 

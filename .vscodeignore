@@ -3,7 +3,7 @@
 .github/**
 src/**
 node_modules/**
-mcp/node_modules/**
+mcp/**
 legacy/**
 snapshots/**
 touchdesigner/**

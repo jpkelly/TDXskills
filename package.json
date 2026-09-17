@@ -2,7 +2,7 @@
   "name": "tdx-skills",
   "displayName": "TDXskills — TouchDesigner Bridge",
   "description": "Run Python in a live TouchDesigner instance from VS Code. Send selections, lines, or whole files and read the results without touching the Textport.",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "publisher": "jp",
   "license": "MIT",
   "icon": "resources/icon.png",
@@ -25,9 +25,12 @@
     "theme": "dark"
   },
   "engines": {
-    "vscode": "^1.85.0"
+    "vscode": "^1.101.0"
   },
-  "categories": ["Other", "Programming Languages"],
+  "categories": [
+    "Other",
+    "Programming Languages"
+  ],
   "activationEvents": [
     "onLanguage:python"
   ],
@@ -100,6 +103,12 @@
         }
       ]
     },
+    "mcpServerDefinitionProviders": [
+      {
+        "id": "tdx-skills.td-bridge",
+        "label": "TouchDesigner Bridge"
+      }
+    ],
     "walkthroughs": [
       {
         "id": "tdxGettingStarted",
@@ -110,28 +119,42 @@
             "id": "bridgeCode",
             "title": "Get the bridge callback code",
             "description": "TouchDesigner needs a Web Server DAT callback to receive code. Open the script and save it next to your project.\n[Show Bridge Callback Code](command:tdBridge.generateBridge)",
-            "media": { "markdown": "resources/walkthrough/bridge-code.md" },
-            "completionEvents": ["onCommand:tdBridge.generateBridge"]
+            "media": {
+              "markdown": "resources/walkthrough/bridge-code.md"
+            },
+            "completionEvents": [
+              "onCommand:tdBridge.generateBridge"
+            ]
           },
           {
             "id": "webServerDat",
             "title": "Create the Web Server DAT",
             "description": "In TouchDesigner, add a Web Server DAT on port 9980 and point its docked callbacks DAT at the saved file with Sync to File on.",
-            "media": { "markdown": "resources/walkthrough/web-server-dat.md" }
+            "media": {
+              "markdown": "resources/walkthrough/web-server-dat.md"
+            }
           },
           {
             "id": "connect",
             "title": "Test the connection",
             "description": "Check that VS Code can reach TouchDesigner.\n[Connect to TouchDesigner](command:tdBridge.connect)",
-            "media": { "markdown": "resources/walkthrough/connect.md" },
-            "completionEvents": ["onCommand:tdBridge.connect"]
+            "media": {
+              "markdown": "resources/walkthrough/connect.md"
+            },
+            "completionEvents": [
+              "onCommand:tdBridge.connect"
+            ]
           },
           {
             "id": "sendCode",
             "title": "Send your first code",
             "description": "Select Python in any file and press ⌘/Ctrl+Enter. Expressions return their value; statements print their output.",
-            "media": { "markdown": "resources/walkthrough/send-code.md" },
-            "completionEvents": ["onCommand:tdBridge.sendSelection"]
+            "media": {
+              "markdown": "resources/walkthrough/send-code.md"
+            },
+            "completionEvents": [
+              "onCommand:tdBridge.sendSelection"
+            ]
           }
         ]
       }
@@ -193,13 +216,19 @@
           "type": "string",
           "default": "",
           "description": "Path to TouchDesigner's bundled Python, used for TDI autocomplete. Empty means auto-detect."
+        },
+        "tdBridge.enableMcpServer": {
+          "type": "boolean",
+          "default": true,
+          "description": "Offer the bundled MCP server, which gives chat models td_execute, td_eval and td_inspect tools."
         }
       }
     }
   },
   "scripts": {
-    "vscode:prepublish": "tsc -p ./",
-    "compile": "tsc -p ./",
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./ && npm run bundle:mcp",
+    "bundle:mcp": "esbuild mcp/index.js --bundle --platform=node --format=esm --target=node20 --outfile=out/mcp/server.mjs",
     "watch": "tsc -watch -p ./",
     "lint": "eslint src --ext ts",
     "package": "vsce package"
@@ -207,6 +236,7 @@
   "devDependencies": {
     "@types/node": "^20.0.0",
     "@types/vscode": "^1.85.0",
+    "esbuild": "^0.28.2",
     "typescript": "^5.3.0"
   }
 }

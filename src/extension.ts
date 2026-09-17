@@ -158,11 +158,60 @@ export function activate(context: vscode.ExtensionContext) {
     );
 
     registerSnapshotCommands(context);
+    registerMcpServer(context);
 
     // Auto-connect if configured
     if (vscode.workspace.getConfiguration('tdBridge').get<boolean>('autoConnect', false)) {
         vscode.commands.executeCommand('tdBridge.connect');
     }
+}
+
+// ─── MCP ─────────────────────────────────────────────────────────────────
+
+function registerMcpServer(context: vscode.ExtensionContext): void {
+    const didChange = new vscode.EventEmitter<void>();
+    context.subscriptions.push(didChange);
+
+    context.subscriptions.push(
+        vscode.workspace.onDidChangeConfiguration((e) => {
+            if (
+                e.affectsConfiguration('tdBridge.host') ||
+                e.affectsConfiguration('tdBridge.port') ||
+                e.affectsConfiguration('tdBridge.enableMcpServer')
+            ) {
+                didChange.fire();
+            }
+        })
+    );
+
+    context.subscriptions.push(
+        vscode.lm.registerMcpServerDefinitionProvider('tdx-skills.td-bridge', {
+            onDidChangeMcpServerDefinitions: didChange.event,
+            provideMcpServerDefinitions: () => {
+                const config = vscode.workspace.getConfiguration('tdBridge');
+                if (!config.get<boolean>('enableMcpServer', true)) {
+                    return [];
+                }
+
+                const server = vscode.Uri.joinPath(context.extensionUri, 'out', 'mcp', 'server.mjs').fsPath;
+
+                return [
+                    new vscode.McpStdioServerDefinition(
+                        'TouchDesigner Bridge',
+                        // Electron-as-node avoids depending on `node` being on PATH.
+                        process.execPath,
+                        [server],
+                        {
+                            ELECTRON_RUN_AS_NODE: '1',
+                            TD_BRIDGE_HOST: config.get<string>('host', '127.0.0.1'),
+                            TD_BRIDGE_PORT: String(config.get<number>('port', 9980)),
+                        },
+                        context.extension.packageJSON.version
+                    ),
+                ];
+            },
+        })
+    );
 }
 
 // ─── Snapshots ───────────────────────────────────────────────────────────

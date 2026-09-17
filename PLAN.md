@@ -2,7 +2,7 @@
 
 > **Created:** 2026-09-16
 > **Goal:** Transform TDXskills from a workspace-folder-based toolkit into a published VS Code extension that any TouchDesigner + VS Code user can install and use with minimal configuration.
-> **Status:** Phase 2 complete and verified against live TD — ready to begin Phase 3
+> **Status:** Phases 0–3 implemented and installed locally (v0.4.0). Two Phase 3 test checkboxes still open — confirm the MCP tools surface in Chat with a non-Anthropic model and from a non-TDXskills workspace. Next up: Phase 4 (setup assistant).
 
 ---
 
@@ -236,15 +236,30 @@ double-encoding bug without needing `json.dumps(json.dumps(...))`.
 
 **Goal:** Copilot Chat tools (td_execute, td_eval, td_inspect) work automatically after extension install. No manual mcp.json setup.
 
+**Approach changed.** The plan predated checking the API. VS Code has stable `lm.registerMcpServerDefinitionProvider` plus a
+`contributes.mcpServerDefinitionProviders` contribution point, so the extension registers the server directly. No
+`mcp.json` is written into anyone's workspace, and the server is available in every window rather than only in projects
+that happen to contain the config file. Requires `engines.vscode ^1.101.0`.
+
 **Tasks:**
-- [ ] Ensure `mcp/index.js` is self-contained (no external deps beyond MCP SDK — already true)
-- [ ] Add build step: `npm run compile` compiles `mcp/index.js` and copies to `out/mcp/index.js` (or bundle with esbuild)
-- [ ] On extension activation: write `.vscode/mcp.json` to the workspace pointing to the bundled MCP server path (`${extensionPath}/out/mcp/index.js`)
-- [ ] Add `tdBridge.enableMcpServer` setting (default: true) — user can disable
-- [ ] Handle the case where mcp.json already exists (don't overwrite, offer to merge)
-- [ ] MCP server reads host/port from env vars — extension passes `TD_BRIDGE_HOST` and `TD_BRIDGE_PORT` when writing mcp.json (or the MCP server reads VS Code settings — needs investigation)
-- [ ] Test: install extension, open workspace, reload window, verify MCP tools appear in Copilot Chat
-- [ ] Test: td_execute, td_eval, td_inspect all work against running TD
+- [x] Bundle `mcp/index.js` and its SDK into a single `out/mcp/server.mjs` with esbuild
+- [x] Add `bundle:mcp` script; `compile` runs it after `tsc`
+- [x] Contribute `mcpServerDefinitionProviders` with id `tdx-skills.td-bridge`
+- [x] Register the provider on activation, returning an `McpStdioServerDefinition`
+- [x] Add `tdBridge.enableMcpServer` setting (default true) — returns no definitions when off
+- [x] Fire `onDidChangeMcpServerDefinitions` when host, port, or the enable flag change
+- [x] Pass `TD_BRIDGE_HOST` / `TD_BRIDGE_PORT` through the definition's env
+- [x] Exclude `mcp/**` from the `.vsix` — the bundle supersedes the source
+- [x] Test: bundled server responds to `initialize` and `tools/list` over stdio
+- [x] Test: spawned via Electron-as-node exactly as the extension does, `td_eval` returned a live frame number
+- [ ] Test: tools appear in Copilot Chat after a window reload and work from a non-TDXskills workspace
+
+**Runtime choice.** The definition uses `process.execPath` with `ELECTRON_RUN_AS_NODE=1` rather than `node`. VS Code does
+not guarantee a `node` binary on PATH, but the editor's own Electron binary can run as Node, so this works on a machine
+with no Node installed at all.
+
+**The workspace `.vscode/mcp.json` was deleted** — it would have registered a second, identical server alongside the
+extension's. A tracked copy remains at `legacy/mcp.json`.
 - [ ] Test: disabling `tdBridge.enableMcpServer` removes the tools
 
 **Deliverable:** Zero-config MCP integration. One extension install = Copilot Chat can control TD.
@@ -385,3 +400,5 @@ double-encoding bug without needing `json.dumps(json.dumps(...))`.
 | 2026-09-16 | 1 | Extension core fixed: dead socket bridge removed, probe-based `testConnection()`, lazy connect, config plumbing, v0.2.0. Added `auto` exec mode. Verified end-to-end in the dev host against live TD 2025.33230. |
 | 2026-09-16 | 1.5 | Packaged and installed locally as `jp.tdx-skills@0.2.1`. Added icon, listing metadata, 4-step walkthrough, editor title button. Dev host abandoned in favour of the vsix install loop. |
 | 2026-09-16 | 2 | `src/snapshot.ts` ports save/restore/diff/list to TypeScript; 4 commands with QuickPick/InputBox prompts. Fixed the legacy restore path off-by-one. Installed as v0.3.0, verified live. |
+| 2026-09-16 | 3 | MCP server bundled with esbuild and registered via `lm.registerMcpServerDefinitionProvider` instead of writing `mcp.json`. Spawned through Electron-as-node. Installed as v0.4.0. |
+| 2026-09-16 | — | Real-world validation via the bridge (not extension development, but exercises it): rebuilt the MyUI modal demo after the user deleted it, then built a render network (spherePOP → geometryCOMP → renderTOP → outTOP) from scratch. Surfaced new TD API gotchas — see repo memory `td-bridge.md`. Confirms send/eval/exec is solid for real authoring work, not just probes. |

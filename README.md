@@ -16,7 +16,7 @@ A portable toolkit for working with TouchDesigner from VS Code. Write Python in 
 
 1. Create a **Web Server DAT** (Tab → "Web Server")
 2. Set **Port** to `9980`
-3. Set the **Callbacks DAT** to link to `touchdesigner/td_bridge_webserver.py` (enable sync)
+3. Set the **Callbacks DAT** to link to `resources/td_bridge_webserver.py` (enable sync)
 4. Make sure **Active** is on
 
 ### 2. VS Code side
@@ -56,10 +56,13 @@ TDXskills/
 ├── mcp/
 │   ├── package.json                   # MCP server deps
 │   └── index.js                       # MCP server (td_execute, td_eval, td_inspect)
-├── touchdesigner/
-│   └── td_bridge_webserver.py         # Web Server DAT callback (paste into TD)
-├── snapshots/                         # Saved node state (JSON, git-friendly)
+├── resources/
+│   └── td_bridge_webserver.py         # Web Server DAT callback (shipped in the .vsix)
+├── legacy/                            # Tracked copies of the workspace scripts + configs
+├── snapshots/
+│   └── examples/                      # Demo node state from the UI build (JSON)
 ├── src/                               # VS Code extension source (for future publishing)
+├── PLAN.md                            # Extension portability roadmap
 ├── package.json                       # Extension manifest
 ├── tsconfig.json
 ├── README.md                          # This file
@@ -69,7 +72,8 @@ TDXskills/
 ## Using in Another Project
 
 1. Copy this folder into your project (or add as a workspace folder)
-2. In TD, create a Web Server DAT on port 9980, link callbacks to `touchdesigner/td_bridge_webserver.py`
+2. Copy the files from `legacy/` into that project's `.vscode/` folder
+3. In TD, create a Web Server DAT on port 9980, link callbacks to `resources/td_bridge_webserver.py`
 3. Open the workspace in VS Code — tasks, MCP server, and TDI settings load automatically
 4. The `.github/copilot-instructions.md` rules apply to any workspace that includes this folder
 
